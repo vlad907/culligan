@@ -238,7 +238,31 @@
   @media(max-width:820px){.foot{grid-template-columns:1fr 1fr}}
   @media(max-width:520px){.foot{grid-template-columns:1fr}}
 
-  .flag{position:fixed;bottom:14px;right:14px;z-index:80;background:rgba(18,26,38,.92);border:1px solid var(--line-2);color:#cfe0ff;font-size:11px;font-weight:800;letter-spacing:.05em;padding:8px 13px;border-radius:999px;backdrop-filter:blur(8px)}
+  .flag{position:fixed;bottom:14px;left:14px;z-index:80;background:rgba(18,26,38,.92);border:1px solid var(--line-2);color:#cfe0ff;font-size:11px;font-weight:800;letter-spacing:.05em;padding:8px 13px;border-radius:999px;backdrop-filter:blur(8px)}
+
+  /* scroll-triggered free-test toast + collapsed bubble */
+  .ft-toast{position:fixed;right:22px;bottom:22px;z-index:75;width:320px;max-width:calc(100vw - 32px);
+    background:var(--surface);border:1px solid var(--line-2);border-radius:18px;padding:20px 20px 18px;
+    box-shadow:var(--shadow);transform:translateY(26px) scale(.97);opacity:0;pointer-events:none;
+    transition:opacity .35s ease, transform .35s ease}
+  .ft-toast.show{transform:none;opacity:1;pointer-events:auto}
+  .ft-toast .x{position:absolute;top:10px;right:12px;width:28px;height:28px;border:none;background:transparent;color:var(--muted);font-size:20px;line-height:1;cursor:pointer;border-radius:7px}
+  .ft-toast .x:hover{color:var(--ink);background:var(--surface-2)}
+  .ft-ic{width:42px;height:42px;border-radius:12px;display:grid;place-items:center;background:rgba(42,123,255,.14);color:var(--blue-soft);margin-bottom:13px}
+  .ft-ic svg{width:23px;height:23px}
+  .ft-toast h4{font-family:"Archivo","Hanken Grotesk",sans-serif;font-size:19px;color:var(--ink);font-weight:800;margin:0;letter-spacing:-.01em}
+  .ft-toast p{color:var(--muted);font-size:14px;margin:7px 0 15px;line-height:1.5}
+  .ft-toast .btn{width:100%;justify-content:center;font-size:14.5px;padding:12px 18px}
+  .ft-bubble{position:fixed;right:22px;bottom:22px;z-index:75;width:58px;height:58px;border-radius:50%;border:none;cursor:pointer;
+    background:linear-gradient(150deg,var(--blue),#123a8f);color:#fff;display:none;place-items:center;
+    box-shadow:0 16px 32px -8px rgba(42,123,255,.6);transition:transform .2s ease}
+  .ft-bubble.show{display:grid;animation:ftpop .4s ease}
+  .ft-bubble:hover{transform:translateY(-3px) scale(1.05)}
+  .ft-bubble svg{width:27px;height:27px}
+  .ft-bubble::after{content:"";position:absolute;top:0;right:0;width:13px;height:13px;border-radius:50%;background:var(--aqua);border:2px solid var(--bg);animation:ftpulse 2s ease-in-out infinite}
+  @keyframes ftpop{from{transform:scale(0);opacity:0}to{transform:scale(1);opacity:1}}
+  @keyframes ftpulse{0%,100%{box-shadow:0 0 0 0 rgba(70,211,240,.5)}50%{box-shadow:0 0 0 7px rgba(70,211,240,0)}}
+  @media(max-width:480px){.ft-toast{right:12px;left:12px;bottom:12px;width:auto}.ft-bubble{right:14px;bottom:14px}}
 
   @media (prefers-reduced-motion: reduce){
     *{animation:none!important;scroll-behavior:auto!important}
@@ -451,6 +475,17 @@
 
 <div class="flag">Design concept — Culligan of Chico</div>
 
+<div class="ft-toast" id="ftToast" role="dialog" aria-label="Free water test offer">
+  <button class="x" id="ftClose" type="button" aria-label="Close">&times;</button>
+  <div class="ft-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3s6 6.5 6 11a6 6 0 0 1-12 0c0-4.5 6-11 6-11Z"/></svg></div>
+  <h4>Free Water Test</h4>
+  <p>Find out exactly what's in your water — on us. No cost, no pressure.</p>
+  <a class="btn btn-primary" href="#test" onclick="return bookNow(event)">Book my free test <svg class="arr" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M7 17L17 7M17 7H8M17 7v9"/></svg></a>
+</div>
+<button class="ft-bubble" id="ftBubble" type="button" aria-label="Book a free water test">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3s6 6.5 6 11a6 6 0 0 1-12 0c0-4.5 6-11 6-11Z"/></svg>
+</button>
+
 <script>
   // ServiceTitan Scheduling Pro — open the booking widget; fall back to the on-page form
   function bookNow(e){
@@ -507,6 +542,29 @@
     },{threshold:.5});
     nums.forEach(function(n){ io.observe(n); });
   }
+
+  // free-water-test toast: pops once after scrolling, collapses to a corner bubble
+  (function(){
+    var toast=document.getElementById('ftToast'),
+        closeBtn=document.getElementById('ftClose'),
+        bubble=document.getElementById('ftBubble');
+    if(!toast||!bubble) return;
+    var autoShown=false;
+    function openToast(){ toast.classList.add('show'); bubble.classList.remove('show'); }
+    function showBubble(){ toast.classList.remove('show'); bubble.classList.add('show'); }
+    // if they already dismissed it this session, start collapsed and don't auto-pop
+    try{ if(sessionStorage.getItem('ftDismissed')){ autoShown=true; showBubble(); } }catch(e){}
+    function onScroll(){
+      if(autoShown) return;
+      if(window.scrollY > Math.max(480, window.innerHeight*0.6)){
+        autoShown=true; openToast();
+        window.removeEventListener('scroll', onScroll);
+      }
+    }
+    window.addEventListener('scroll', onScroll, {passive:true});
+    closeBtn.addEventListener('click', function(){ showBubble(); try{ sessionStorage.setItem('ftDismissed','1'); }catch(e){} });
+    bubble.addEventListener('click', openToast);
+  })();
 </script>
 
 <!-- ServiceTitan Scheduling Pro embed -->
