@@ -93,7 +93,7 @@
   /* ---------- Hero ---------- */
   .hero{position:relative;min-height:88vh;display:flex;align-items:center;overflow:hidden;isolation:isolate}
   .hero-bg{position:absolute;top:-25%;left:0;right:0;height:150%;z-index:0;will-change:transform}
-  .hero-bg img{width:100%;height:100%;object-fit:cover;display:block}
+  .hero-bg img,.hero-bg video{width:100%;height:100%;object-fit:cover;display:block}
   .hero-scrim{position:absolute;inset:0;z-index:1;
     background:linear-gradient(180deg,rgba(6,9,14,.72) 0%,rgba(6,9,14,.5) 42%,rgba(6,9,14,.86) 100%),
                radial-gradient(120% 90% at 15% 40%, rgba(8,11,17,.7), transparent 60%)}
@@ -266,7 +266,7 @@
 
   @media (prefers-reduced-motion: reduce){
     *{animation:none!important;scroll-behavior:auto!important}
-    .hero-bg img{transform:none}
+    .hero-bg img,.hero-bg video{transform:none}
   }
 </style>
 
@@ -293,7 +293,11 @@
 </header>
 
 <section class="hero">
-  <div class="hero-bg"><img src="img/herobg.webp" alt="Sunlit water and rising bubbles"></div>
+  <div class="hero-bg">
+    <video id="heroVideo" class="hero-video" autoplay muted loop playsinline preload="auto" poster="img/hero-poster.webp" aria-hidden="true">
+      <source src="media/hero.mp4" type="video/mp4">
+    </video>
+  </div>
   <div class="hero-scrim"></div>
   <div class="wrap">
     <div class="hero-inner">
@@ -506,8 +510,10 @@
   // header background on scroll
   var hdr=document.getElementById('hdr');
 
-  // ---- hero: background photo moves up as you scroll down (parallax) ----
+  // ---- hero: background video moves up as you scroll down (parallax) ----
   var heroBg=document.querySelector('.hero-bg');
+  var heroVideo=document.getElementById('heroVideo');
+  if(heroVideo && reduceMotion){ try{ heroVideo.removeAttribute('autoplay'); heroVideo.pause(); }catch(e){} }
 
   var ticking=false;
   function frame(){
