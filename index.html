@@ -263,7 +263,7 @@
         <svg class="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z"/></svg>
       </button>
       <a class="nav-phone" href="tel:5303435100"><span>Call</span> 530-343-5100</a>
-      <a class="btn btn-primary" href="#test">Get in touch <svg class="arr" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M7 17L17 7M17 7H8M17 7v9"/></svg></a>
+      <a class="btn btn-primary" href="#test" onclick="return bookNow(event)">Book Service <svg class="arr" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M7 17L17 7M17 7H8M17 7v9"/></svg></a>
     </div>
   </div>
 </header>
@@ -277,7 +277,7 @@
       <h1>The Difference Is<br>In Your <span class="hl">Water.</span></h1>
       <p class="sub">Softer showers, spot-free dishes, and drinking water you'll actually crave — from the local Culligan team that's cared for the North State's water for 40+ years.</p>
       <div class="cta">
-        <a class="btn btn-primary" href="#test">Book a Free Water Test <svg class="arr" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M7 17L17 7M17 7H8M17 7v9"/></svg></a>
+        <a class="btn btn-primary" href="#test" onclick="return bookNow(event)">Book a Free Water Test <svg class="arr" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M7 17L17 7M17 7H8M17 7v9"/></svg></a>
         <a class="btn btn-glass" href="#products">Explore Solutions <svg class="arr" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M7 17L17 7M17 7H8M17 7v9"/></svg></a>
       </div>
       <div class="rating"><span class="stars">★★★★★</span> <b>4.9</b> · 66 Google reviews from your neighbors</div>
@@ -364,7 +364,7 @@
         <h2 style="margin-top:14px">Find out exactly what's in your water.</h2>
         <p>A Culligan expert comes to your home, tests your water on the spot, and explains what it means. You decide what to do next — no pressure, ever.</p>
         <div class="cta">
-          <a class="btn btn-primary" href="#">Book my free test <svg class="arr" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M7 17L17 7M17 7H8M17 7v9"/></svg></a>
+          <a class="btn btn-primary" href="#test" onclick="return bookNow(event)">Book my free test <svg class="arr" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M7 17L17 7M17 7H8M17 7v9"/></svg></a>
           <a class="btn btn-light" href="tel:5303435100">Call 530-343-5100</a>
         </div>
       </div>
@@ -452,6 +452,17 @@
 <div class="flag">Design concept — Culligan of Chico</div>
 
 <script>
+  // ServiceTitan Scheduling Pro — open the booking widget; fall back to the on-page form
+  function bookNow(e){
+    if(window._scheduler){
+      try{ window._scheduler.show({ schedulerId: 'sched_ognsnzww0ar4ja1azb6ex3n4' }); }
+      catch(err){ return true; }
+      if(e && e.preventDefault){ e.preventDefault(); }
+      return false;
+    }
+    return true; // widget not loaded (e.g. preview) -> follow the href to #test
+  }
+
   // theme toggle (dark default, light optional; choice persists)
   var themeBtn=document.getElementById('themeToggle');
   if(themeBtn){ themeBtn.addEventListener('click',function(){
@@ -497,6 +508,15 @@
     nums.forEach(function(n){ io.observe(n); });
   }
 </script>
+
+<!-- ServiceTitan Scheduling Pro embed -->
+<script
+  data-api-key="o4envaryt34mnduwqb8dcz7a"
+  data-schedulerid="sched_ognsnzww0ar4ja1azb6ex3n4"
+  defer
+  id="se-widget-embed"
+  src="https://embed.scheduler.servicetitan.com/scheduler-v1.js"
+></script>
 
 </body>
 
