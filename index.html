@@ -281,6 +281,42 @@
   .contact-map iframe{width:100%;height:100%;min-height:300px;border:0;display:block}
   @media(max-width:820px){.contact-grid{grid-template-columns:1fr}.contact-map{min-height:240px}}
 
+  /* water quiz */
+  #quiz{background:var(--bg2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .quiz-card{max-width:720px;margin:44px auto 0;background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:34px;box-shadow:var(--shadow)}
+  .quiz-progress{height:6px;background:var(--surface-2);border-radius:999px;overflow:hidden;margin-bottom:28px}
+  .quiz-progress span{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--blue),var(--aqua));transition:width .35s ease}
+  .quiz-q{font-family:"Archivo",sans-serif;font-weight:800;font-size:clamp(22px,3.4vw,30px);color:var(--ink);letter-spacing:-.01em}
+  .quiz-hint{color:var(--muted);font-size:14.5px;margin-top:8px}
+  .quiz-options{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:24px}
+  .quiz-opt{display:flex;align-items:center;gap:12px;padding:16px 18px;border:1.5px solid var(--line);border-radius:14px;background:var(--bg2);cursor:pointer;font-weight:700;color:var(--text);transition:border-color .15s,background .15s;user-select:none}
+  .quiz-opt:hover{border-color:var(--line-2)}
+  .quiz-opt.sel{border-color:var(--blue);background:rgba(42,123,255,.1);color:var(--ink)}
+  .quiz-opt .box{width:22px;height:22px;border-radius:6px;border:2px solid var(--line-2);flex:none;display:grid;place-items:center;color:#fff}
+  .quiz-opt.single .box{border-radius:50%}
+  .quiz-opt .box svg{width:13px;height:13px;opacity:0}
+  .quiz-opt.sel .box{background:var(--blue);border-color:var(--blue)}
+  .quiz-opt.sel .box svg{opacity:1}
+  .quiz-nav{display:flex;justify-content:space-between;align-items:center;margin-top:26px;gap:12px}
+  .quiz-back{background:none;border:none;color:var(--muted);font-weight:700;cursor:pointer;font-size:14.5px;padding:8px 2px}
+  .quiz-back:hover{color:var(--ink)}
+  .quiz-err{color:#ff8a8a;font-size:13.5px;margin-top:12px;min-height:2px}
+  .quiz-field{margin-top:22px}
+  .quiz-field input[type=email]{width:100%;padding:15px 18px;border-radius:12px;border:1.5px solid var(--line);background:var(--bg2);color:var(--ink);font-size:15px;font-family:inherit}
+  .quiz-field input[type=email]:focus{outline:none;border-color:var(--blue)}
+  .quiz-check{display:flex;gap:10px;align-items:flex-start;margin-top:14px;color:var(--muted);font-size:14px;cursor:pointer}
+  .quiz-check input{margin-top:3px;flex:none}
+  .quiz-result{text-align:center}
+  .quiz-result .ic{width:64px;height:64px;border-radius:18px;margin:0 auto 18px;background:rgba(42,123,255,.14);color:var(--blue-soft);display:grid;place-items:center}
+  .quiz-result h3{font-family:"Archivo",sans-serif;font-weight:800;font-size:26px;color:var(--ink);letter-spacing:-.01em}
+  .quiz-result p{color:var(--muted);margin-top:12px;font-size:16px;max-width:52ch;margin-left:auto;margin-right:auto}
+  .quiz-rec{text-align:left;background:var(--bg2);border:1px solid var(--line);border-radius:14px;padding:20px;margin-top:22px;display:flex;flex-direction:column;gap:14px}
+  .quiz-rec .r{display:flex;gap:12px;align-items:flex-start}
+  .quiz-rec .r b{color:var(--ink)}
+  .quiz-rec .r .d{color:var(--muted);font-size:14.5px;margin-top:3px}
+  .quiz-result .cta{margin-top:24px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap;align-items:center}
+  @media(max-width:560px){.quiz-options{grid-template-columns:1fr}.quiz-card{padding:24px}}
+
   .flag{position:fixed;bottom:14px;left:14px;z-index:80;background:rgba(18,26,38,.92);border:1px solid var(--line-2);color:#cfe0ff;font-size:11px;font-weight:800;letter-spacing:.05em;padding:8px 13px;border-radius:999px;backdrop-filter:blur(8px)}
 
   /* scroll-triggered free-test toast + collapsed bubble */
@@ -427,6 +463,20 @@
   </div>
 </section>
 
+<section id="quiz">
+  <div class="wrap">
+    <div class="sec-head center">
+      <span class="eyebrow center">Water Quiz</span>
+      <h2>What's in your water?</h2>
+      <p>Take this 60-second quiz to understand your tap water — then confirm it with a free in-home test.</p>
+    </div>
+    <div class="quiz-card">
+      <div class="quiz-progress"><span id="quizBar"></span></div>
+      <div id="quizBody"></div>
+    </div>
+  </div>
+</section>
+
 <section class="how" id="how">
   <div class="wrap">
     <div class="sec-head">
@@ -558,7 +608,7 @@
         </div>
       </div>
       <div><h4>Products</h4><a href="#">Water Softeners</a><a href="#">Drinking Water</a><a href="#">Whole-Home Systems</a><a href="#">PFAS Solutions</a><a href="#">Commercial</a></div>
-      <div><h4>Services</h4><a href="#">Culligan Unlimited</a><a href="#">Salt Delivery</a><a href="#">Free Water Test</a><a href="#">Water Quiz</a><a href="#">Offers</a></div>
+      <div><h4>Services</h4><a href="#products">What We Do</a><a href="#quiz">Water Quiz</a><a href="#test" class="se-booking-show" onclick="if(window._scheduler)return false">Free Water Test</a><a href="https://culliganofchico.myservicetitan.com/login" target="_blank" rel="noopener">Pay My Bill</a><a href="#faq">FAQ</a></div>
       <div><h4>Company</h4><a href="#products">What We Do</a><a href="#faq">FAQ</a><a href="#contact">Contact</a><a href="https://culliganofchico.myservicetitan.com/login" target="_blank" rel="noopener">Pay My Bill</a><a href="https://culliganofchico.myservicetitan.com/login" target="_blank" rel="noopener">Member Login</a></div>
     </div>
     <div class="foot-bottom">
@@ -674,6 +724,87 @@
     menu.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', function(){ setOpen(false); }); });
     document.addEventListener('keydown', function(e){ if(e.key==='Escape') setOpen(false); });
     window.addEventListener('resize', function(){ if(window.innerWidth>1040) setOpen(false); });
+  })();
+
+  // water quality quiz (replicates the old site's flow)
+  (function(){
+    var body=document.getElementById('quizBody'); if(!body) return;
+    var bar=document.getElementById('quizBar');
+    var DROP='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="30" height="30"><path d="M12 3s6 6.5 6 11a6 6 0 0 1-12 0c0-4.5 6-11 6-11Z"/></svg>';
+    var CHECK='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg>';
+    var ARROW='<svg class="arr" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M7 17L17 7M17 7H8M17 7v9"/></svg>';
+    var A={concerns:[],odor:null,place:null,source:null,email:'',news:false};
+    var steps=[
+      {type:'intro'},
+      {id:'concerns',type:'multi',q:"What are your water concerns?",hint:"Select all that apply.",opts:["Taste & Odor","Yellow Staining","Corroding Pipes","Spots on Dishware & Fixtures","Skin & Hair Problems"]},
+      {id:'odor',type:'single',q:"What odor does your water have?",opts:["Sulfur","Metallic","Chlorine","Other","All of the above","None"]},
+      {id:'place',type:'single',q:"Where are you installing your water solution?",opts:["Home","Office"]},
+      {id:'source',type:'single',q:"Where is your tap water sourced?",opts:["Municipal Water","Well Water","Unsure"]},
+      {type:'form'},
+      {type:'result'}
+    ];
+    var i=0;
+    function esc(s){return s.replace(/"/g,'&quot;');}
+    function setBar(){ bar.style.width=(i/(steps.length-1)*100)+'%'; }
+    function render(){
+      setBar(); var s=steps[i];
+      if(s.type==='intro'){
+        body.innerHTML='<div class="quiz-result"><div class="ic">'+DROP+'</div><h3>What\'s in your water?</h3><p>Answer a few quick questions about your tap water and we\'ll point you to the most likely fix — then confirm it with a free in-home test.</p><div class="cta"><button class="btn btn-primary" id="qStart">Take the quiz 💧</button></div></div>';
+        body.querySelector('#qStart').onclick=function(){ i++; render(); };
+        return;
+      }
+      if(s.type==='multi'||s.type==='single'){
+        var h='<div class="quiz-q">'+s.q+'</div>'+(s.hint?'<div class="quiz-hint">'+s.hint+'</div>':'')+'<div class="quiz-options">';
+        s.opts.forEach(function(o){
+          var on = s.type==='multi'? A[s.id].indexOf(o)>-1 : A[s.id]===o;
+          h+='<div class="quiz-opt '+(s.type==='single'?'single':'')+(on?' sel':'')+'" data-o="'+esc(o)+'"><span class="box">'+CHECK+'</span>'+o+'</div>';
+        });
+        h+='</div><div class="quiz-err" id="qErr"></div><div class="quiz-nav">'+(i>1?'<button class="quiz-back" id="qBack">← Back</button>':'<span></span>')+'<button class="btn btn-primary" id="qNext">Next</button></div>';
+        body.innerHTML=h;
+        body.querySelectorAll('.quiz-opt').forEach(function(el){
+          el.onclick=function(){
+            var o=el.getAttribute('data-o');
+            if(s.type==='multi'){ var a=A[s.id],k=a.indexOf(o); if(k>-1)a.splice(k,1); else a.push(o); el.classList.toggle('sel'); }
+            else { A[s.id]=o; body.querySelectorAll('.quiz-opt').forEach(function(x){x.classList.remove('sel');}); el.classList.add('sel'); }
+          };
+        });
+        var bk=body.querySelector('#qBack'); if(bk) bk.onclick=function(){ i--; render(); };
+        body.querySelector('#qNext').onclick=function(){
+          var ok = s.type==='multi'? A[s.id].length>0 : !!A[s.id];
+          if(!ok){ body.querySelector('#qErr').textContent = s.type==='multi'?'Please select at least one option to continue.':'Please choose an option to continue.'; return; }
+          i++; render();
+        };
+        return;
+      }
+      if(s.type==='form'){
+        body.innerHTML='<div class="quiz-q">Where should we send your results?</div><div class="quiz-field"><input type="email" id="qEmail" placeholder="you@email.com" value="'+esc(A.email)+'"></div><label class="quiz-check"><input type="checkbox" id="qNews"'+(A.news?' checked':'')+'> Send me occasional water tips &amp; local offers.</label><label class="quiz-check"><input type="checkbox" id="qConsent"> I agree to be contacted by Culligan of Chico about my results. *</label><div class="quiz-err" id="qErr"></div><div class="quiz-nav"><button class="quiz-back" id="qBack">← Back</button><button class="btn btn-primary" id="qNext">See my results →</button></div>';
+        body.querySelector('#qBack').onclick=function(){ i--; render(); };
+        body.querySelector('#qNext').onclick=function(){
+          var em=body.querySelector('#qEmail').value.trim();
+          A.email=em; A.news=body.querySelector('#qNews').checked;
+          if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(em)){ body.querySelector('#qErr').textContent='Please enter a valid email address.'; return; }
+          if(!body.querySelector('#qConsent').checked){ body.querySelector('#qErr').textContent='Please agree to be contacted to see your results.'; return; }
+          i++; render();
+        };
+        return;
+      }
+      // result
+      var c=A.concerns, recs=[];
+      function has(x){return c.indexOf(x)>-1;}
+      if(has("Spots on Dishware & Fixtures")||has("Skin & Hair Problems")||has("Corroding Pipes"))
+        recs.push(["High-Efficiency Water Softener","Your answers point to hard-water minerals — the cause of spots, scale, and dry skin."]);
+      if(has("Taste & Odor")||(A.odor&&A.odor!=="None"&&A.odor!=="Metallic"))
+        recs.push(["Drinking Water / Filtration","Taste and odor issues are usually solved with reverse-osmosis drinking water or whole-home filtration."]);
+      if(has("Yellow Staining")||A.odor==="Metallic")
+        recs.push(["Iron &amp; Staining Filter","Yellow staining and a metallic edge point to iron — a dedicated filter clears it up."]);
+      if(A.place==="Office")
+        recs.push(["Bottle-Free Water Cooler","For a workplace, a bottle-free cooler gives hot &amp; cold filtered water with no bottles to lug."]);
+      if(!recs.length) recs.push(["Free In-Home Water Test","A quick on-site test will pinpoint exactly what's in your water."]);
+      var items=recs.map(function(r){return '<div class="r"><span style="color:var(--aqua);font-size:18px;line-height:1.2">●</span><div><b>'+r[0]+'</b><div class="d">'+r[1]+'</div></div></div>';}).join('');
+      body.innerHTML='<div class="quiz-result"><div class="ic">'+DROP+'</div><h3>Here\'s what we\'d look at first</h3><p>Based on your answers, these are the most likely fixes. The only way to know for sure is a free in-home water test — no cost, no pressure.</p><div class="quiz-rec">'+items+'</div><div class="cta"><a class="btn btn-primary se-booking-show" href="#test" onclick="if(window._scheduler)return false">Book my free water test '+ARROW+'</a><button class="quiz-back" id="qAgain">Start over</button></div></div>';
+      var ag=body.querySelector('#qAgain'); if(ag) ag.onclick=function(){ A={concerns:[],odor:null,place:null,source:null,email:'',news:false}; i=0; render(); };
+    }
+    render();
   })();
 </script>
 
