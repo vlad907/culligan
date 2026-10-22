@@ -334,6 +334,7 @@
   .ft-bubble.show{display:grid;animation:ftpop .4s ease}
   .ft-bubble:hover{transform:translateY(-3px) scale(1.05)}
   .ft-bubble svg{width:27px;height:27px}
+  .ft-bubble .ft-cmark{width:30px;height:30px;object-fit:contain;filter:brightness(0) invert(1)}
   .ft-bubble::after{content:"";position:absolute;top:0;right:0;width:13px;height:13px;border-radius:50%;background:var(--aqua);border:2px solid var(--bg);animation:ftpulse 2s ease-in-out infinite}
   @keyframes ftpop{from{transform:scale(0);opacity:0}to{transform:scale(1);opacity:1}}
   @keyframes ftpulse{0%,100%{box-shadow:0 0 0 0 rgba(70,211,240,.5)}50%{box-shadow:0 0 0 7px rgba(70,211,240,0)}}
@@ -624,7 +625,7 @@
   <a class="btn btn-primary se-booking-show" href="#test" onclick="if(window._scheduler)return false">Book my free test <svg class="arr" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M7 17L17 7M17 7H8M17 7v9"/></svg></a>
 </div>
 <button class="ft-bubble" id="ftBubble" type="button" aria-label="Book a free water test">
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3s6 6.5 6 11a6 6 0 0 1-12 0c0-4.5 6-11 6-11Z"/></svg>
+  <img class="ft-cmark" src="img/favicon-drop.png" alt="">
 </button>
 
 <script>
