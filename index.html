@@ -88,6 +88,23 @@
   .nav-phone{font-weight:800;color:#fff;font-size:15px;white-space:nowrap}
   .nav-phone span{color:var(--aqua)}
   @media(max-width:1040px){.navlinks{display:none}}
+  .hamburger{display:none;width:44px;height:44px;border-radius:12px;border:1.5px solid var(--line-2);background:rgba(255,255,255,.06);color:#fff;place-items:center;cursor:pointer;flex:none;padding:0}
+  .hamburger:hover{background:rgba(255,255,255,.13)}
+  .hamburger svg{width:22px;height:22px}
+  .hamburger .i-x{display:none}
+  .hamburger.open .i-bars{display:none}
+  .hamburger.open .i-x{display:block}
+  @media(max-width:1040px){.hamburger{display:grid}}
+  .mobile-menu{position:fixed;inset:0;z-index:50;background:rgba(6,9,14,.985);backdrop-filter:blur(10px);
+    padding:104px 30px 40px;display:flex;flex-direction:column;
+    transform:translateY(-14px);opacity:0;pointer-events:none;transition:opacity .28s ease,transform .28s ease}
+  .mobile-menu.open{transform:none;opacity:1;pointer-events:auto}
+  .mobile-menu nav{display:flex;flex-direction:column}
+  .mobile-menu nav a{color:#fff;font-family:"Archivo","Hanken Grotesk",sans-serif;font-weight:800;font-size:clamp(26px,7vw,34px);letter-spacing:-.02em;padding:16px 0;border-bottom:1px solid var(--line)}
+  .mobile-menu nav a:active{color:var(--blue-soft)}
+  .mm-foot{margin-top:auto;display:flex;flex-direction:column;gap:12px}
+  .mm-foot .btn{justify-content:center;font-size:16px;padding:16px 20px}
+  @media(min-width:1041px){.mobile-menu{display:none}}
   @media(max-width:560px){.nav-phone{display:none}}
 
   /* ---------- Hero ---------- */
@@ -314,9 +331,27 @@
       </button>
       <a class="nav-phone" href="tel:5303435100"><span>Call</span> 530-343-5100</a>
       <a class="btn btn-primary se-booking-show" href="#test" onclick="if(window._scheduler)return false">Book Service <svg class="arr" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M7 17L17 7M17 7H8M17 7v9"/></svg></a>
+      <button class="hamburger" id="hamburger" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
+        <svg class="i-bars" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+        <svg class="i-x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6l12 12M18 6 6 18"/></svg>
+      </button>
     </div>
   </div>
 </header>
+
+<div class="mobile-menu" id="mobileMenu">
+  <nav>
+    <a href="#top">Home</a>
+    <a href="#products">What We Do</a>
+    <a href="#test" class="se-booking-show" onclick="if(window._scheduler)return false">Book</a>
+    <a href="https://culliganofchico.myservicetitan.com/login" target="_blank" rel="noopener">Pay My Bill</a>
+    <a href="#contact">Contact</a>
+  </nav>
+  <div class="mm-foot">
+    <a class="btn btn-primary se-booking-show" href="#test" onclick="if(window._scheduler)return false">Book Service <svg class="arr" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M7 17L17 7M17 7H8M17 7v9"/></svg></a>
+    <a class="btn btn-glass" href="tel:5303435100">Call 530-343-5100</a>
+  </div>
+</div>
 
 <section class="hero" id="top">
   <div class="hero-bg">
@@ -622,6 +657,23 @@
     window.addEventListener('scroll', onScroll, {passive:true});
     closeBtn.addEventListener('click', function(){ showBubble(); try{ sessionStorage.setItem('ftDismissed','1'); }catch(e){} });
     bubble.addEventListener('click', openToast);
+  })();
+
+  // mobile / tablet hamburger menu
+  (function(){
+    var burger=document.getElementById('hamburger'), menu=document.getElementById('mobileMenu');
+    if(!burger||!menu) return;
+    function setOpen(open){
+      menu.classList.toggle('open', open);
+      burger.classList.toggle('open', open);
+      burger.setAttribute('aria-expanded', open?'true':'false');
+      burger.setAttribute('aria-label', open?'Close menu':'Open menu');
+      try{ document.body.style.overflow = open ? 'hidden' : ''; }catch(e){}
+    }
+    burger.addEventListener('click', function(){ setOpen(!menu.classList.contains('open')); });
+    menu.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', function(){ setOpen(false); }); });
+    document.addEventListener('keydown', function(e){ if(e.key==='Escape') setOpen(false); });
+    window.addEventListener('resize', function(){ if(window.innerWidth>1040) setOpen(false); });
   })();
 </script>
 
