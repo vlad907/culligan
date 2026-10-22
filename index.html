@@ -71,7 +71,7 @@
   header.scrolled{background:rgba(8,11,17,.82);backdrop-filter:blur(14px);border-bottom-color:var(--line)}
   .nav{display:flex;align-items:center;gap:26px;height:80px}
   .brand{display:flex;align-items:center;gap:11px}
-  .brand .logo{height:34px;width:auto}
+  .brand .logo{height:46px;width:auto}
   .theme-toggle{width:40px;height:40px;border-radius:50%;border:1.5px solid var(--line-2);background:rgba(255,255,255,.06);color:#fff;display:grid;place-items:center;cursor:pointer;transition:transform .2s,background .2s;flex:none}
   .theme-toggle:hover{transform:translateY(-1px);background:rgba(255,255,255,.13)}
   .theme-toggle svg{width:19px;height:19px}
@@ -84,9 +84,10 @@
   .navlinks a:hover{color:#fff}
   .navlinks a::after{content:"";position:absolute;left:0;right:100%;bottom:-2px;height:2px;background:var(--aqua);transition:right .25s}
   .navlinks a:hover::after{right:0}
-  .nav-right{margin-left:auto;display:flex;align-items:center;gap:18px}
-  .nav-phone{font-weight:800;color:#fff;font-size:15px;white-space:nowrap}
-  .nav-phone span{color:var(--aqua)}
+  .nav-right{margin-left:auto;display:flex;align-items:center;gap:11px}
+  .nav-right .btn{padding:12px 18px;font-size:14px}
+  .nav-right .btn svg{width:16px;height:16px}
+  .nav-call svg{margin-right:-2px}
   @media(max-width:1040px){.navlinks{display:none}}
   .hamburger{display:none;width:44px;height:44px;border-radius:12px;border:1.5px solid var(--line-2);background:rgba(255,255,255,.06);color:#fff;place-items:center;cursor:pointer;flex:none;padding:0}
   .hamburger:hover{background:rgba(255,255,255,.13)}
@@ -105,7 +106,8 @@
   .mm-foot{margin-top:auto;display:flex;flex-direction:column;gap:12px}
   .mm-foot .btn{justify-content:center;font-size:16px;padding:16px 20px}
   @media(min-width:1041px){.mobile-menu{display:none}}
-  @media(max-width:560px){.nav-phone{display:none}}
+  @media(max-width:1040px){.nav-cta-extra{display:none}}
+  @media(max-width:700px){.brand .logo{height:34px}}
 
   /* ---------- Hero ---------- */
   .hero{position:relative;min-height:88vh;display:flex;align-items:center;overflow:hidden;isolation:isolate}
@@ -354,7 +356,6 @@
       <a href="#top">Home</a>
       <a href="#products">What We Do</a>
       <a href="#test" class="se-booking-show" onclick="if(window._scheduler)return false">Book</a>
-      <a href="https://culliganofchico.myservicetitan.com/login" target="_blank" rel="noopener">Pay My Bill</a>
       <a href="#contact">Contact</a>
     </nav>
     <div class="nav-right">
@@ -362,7 +363,8 @@
         <svg class="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4.4"/><path d="M12 2v2.4M12 19.6V22M4 12H1.6M22.4 12H20M5.1 5.1l1.7 1.7M17.2 17.2l1.7 1.7M18.9 5.1l-1.7 1.7M6.8 17.2l-1.7 1.7"/></svg>
         <svg class="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z"/></svg>
       </button>
-      <a class="nav-phone" href="tel:5303435100"><span>Call</span> 530-343-5100</a>
+      <a class="btn btn-light nav-call nav-cta-extra" href="tel:5303435100"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 4h3.5l1.5 4-2 1.3a11 11 0 0 0 5 5l1.3-2 4 1.5V19a2 2 0 0 1-2 2A15 15 0 0 1 3 6a2 2 0 0 1 2-2Z"/></svg> 530-343-5100</a>
+      <a class="btn btn-glass nav-cta-extra" href="https://culliganofchico.myservicetitan.com/login" target="_blank" rel="noopener">Pay My Bill</a>
       <a class="btn btn-primary se-booking-show" href="#test" onclick="if(window._scheduler)return false">Book Service <svg class="arr" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M7 17L17 7M17 7H8M17 7v9"/></svg></a>
       <button class="hamburger" id="hamburger" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
         <svg class="i-bars" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
