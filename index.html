@@ -191,8 +191,10 @@
   @media(max-width:560px){.prod-grid{grid-template-columns:1fr}}
 
   /* ---------- How it works ---------- */
-  .how{background:var(--bg2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
-  .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:22px;margin-top:48px}
+  .how{background:var(--bg2)}
+  .hiw-card{background:var(--surface);border:1px solid var(--line);border-radius:28px;overflow:hidden;box-shadow:0 24px 60px rgba(10,30,70,.07)}
+  .hiw-top{padding:52px 48px 48px}
+  .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:22px;margin-top:44px}
   .step{position:relative;padding-top:26px}
   .step .num{font-family:"Archivo";font-weight:900;font-size:15px;color:var(--blue);letter-spacing:.1em}
   .step h3{font-size:20px;margin-top:14px;color:var(--ink);font-weight:800}
@@ -201,8 +203,9 @@
   @media(max-width:880px){.steps{grid-template-columns:1fr 1fr;gap:34px 22px}}
   @media(max-width:520px){.steps{grid-template-columns:1fr}}
 
-  /* ---------- Free test band ---------- */
-  .band{position:relative;border-radius:26px;overflow:hidden;border:1px solid var(--line);isolation:isolate}
+  /* ---------- Free test band (inside the How-it-works container) ---------- */
+  .band{position:relative;overflow:hidden;isolation:isolate}
+  .hiw-card .band{border-radius:0;border:0}
   .band img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2}
   .band .scrim{position:absolute;inset:0;z-index:-1;background:linear-gradient(100deg,rgba(8,11,17,.94) 0%,rgba(8,11,17,.8) 45%,rgba(10,22,44,.55) 100%)}
   .band-inner{padding:64px 56px;max-width:620px}
@@ -556,32 +559,31 @@
 
 <section class="how" id="how">
   <div class="wrap">
-    <div class="sec-head">
-      <span class="eyebrow">How it works</span>
-      <h2>Better water in four simple steps.</h2>
-      <p>From your first water test to install and beyond, your local Culligan team takes care of it — and sticks around to keep it running.</p>
-    </div>
-    <div class="steps">
-      <div class="step"><span class="num">01</span><h3>Book your free test</h3><p>Call or book online. Pick a time that works — we'll confirm and come to you.</p></div>
-      <div class="step"><span class="num">02</span><h3>We come to you</h3><p>A local water treatment specialist tests your water on the spot and explains what it means in plain language.</p></div>
-      <div class="step"><span class="num">03</span><h3>Custom recommendation</h3><p>You get a clear, no-pressure plan built around your home, water, and budget.</p></div>
-      <div class="step"><span class="num">04</span><h3>Install &amp; enjoy</h3><p>We install, show you the ropes, and keep it running with salt delivery and service.</p></div>
-    </div>
-  </div>
-</section>
-
-<section id="test">
-  <div class="wrap">
-    <div class="band">
-      <img src="img/watertest.webp" alt="A Culligan expert performing an in-home water test">
-      <div class="scrim"></div>
-      <div class="band-inner">
-        <span class="eyebrow">Free · No obligation</span>
-        <h2 style="margin-top:14px">Find out exactly what's in your water.</h2>
-        <p>A Culligan expert comes to your home, tests your water on the spot, and explains what it means. You decide what to do next — no pressure, ever.</p>
-        <div class="cta">
-          <a class="btn btn-primary se-booking-show" href="#test" onclick="if(window._scheduler)return false">Book my free test <svg class="arr" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M7 17L17 7M17 7H8M17 7v9"/></svg></a>
-          <a class="btn btn-light" href="tel:5303435100">Call 530-343-5100</a>
+    <div class="hiw-card">
+      <div class="hiw-top">
+        <div class="sec-head">
+          <span class="eyebrow">How it works</span>
+          <h2>Better water in four simple steps.</h2>
+          <p>From your first water test to install and beyond, your local Culligan team takes care of it — and sticks around to keep it running.</p>
+        </div>
+        <div class="steps">
+          <div class="step"><span class="num">01</span><h3>Book your free test</h3><p>Call or book online. Pick a time that works — we'll confirm and come to you.</p></div>
+          <div class="step"><span class="num">02</span><h3>We come to you</h3><p>A local water treatment specialist tests your water on the spot and explains what it means in plain language.</p></div>
+          <div class="step"><span class="num">03</span><h3>Custom recommendation</h3><p>You get a clear, no-pressure plan built around your home, water, and budget.</p></div>
+          <div class="step"><span class="num">04</span><h3>Install &amp; enjoy</h3><p>We install, show you the ropes, and keep it running with salt delivery and service.</p></div>
+        </div>
+      </div>
+      <div class="band" id="test">
+        <img src="img/watertest.webp" alt="A Culligan expert performing an in-home water test">
+        <div class="scrim"></div>
+        <div class="band-inner">
+          <span class="eyebrow">Free · No obligation</span>
+          <h2 style="margin-top:14px">Find out exactly what's in your water.</h2>
+          <p>A Culligan expert comes to your home, tests your water on the spot, and explains what it means. You decide what to do next — no pressure, ever.</p>
+          <div class="cta">
+            <a class="btn btn-primary se-booking-show" href="#test" onclick="if(window._scheduler)return false">Book my free test <svg class="arr" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M7 17L17 7M17 7H8M17 7v9"/></svg></a>
+            <a class="btn btn-light" href="tel:5303435100">Call 530-343-5100</a>
+          </div>
         </div>
       </div>
     </div>
