@@ -60,7 +60,7 @@
   .btn .arr{width:17px;height:17px;transition:transform .2s ease}
   .btn:hover .arr{transform:translate(2px,-2px)}
   .btn:focus-visible{outline:3px solid var(--blue-soft);outline-offset:3px}
-  .btn-primary{background:var(--blue);color:#fff;box-shadow:0 12px 30px -10px rgba(42,123,255,.7)}
+  .btn-primary{background:var(--aqua);color:#fff;box-shadow:0 12px 30px -10px rgba(14,134,184,.55)}
   .btn-primary:hover{transform:translateY(-2px);background:#3b87ff}
   .btn-glass{background:rgba(255,255,255,.06);color:#fff;border-color:var(--line-2);backdrop-filter:blur(6px)}
   .btn-glass:hover{background:rgba(255,255,255,.12);transform:translateY(-2px)}
@@ -80,7 +80,7 @@
   .sn-book:hover{background:#3b87ff;color:#fff}
   @media(max-width:700px){.subnav{display:none}}
   .nav{display:flex;align-items:center;gap:26px;height:84px}
-  header:not(.scrolled) .nav{height:116px}
+  header:not(.scrolled) .nav{height:134px;padding-top:24px;box-sizing:border-box}
   .brand{display:flex;align-items:center;gap:11px}
   .brand .logo{height:100px;width:auto;transition:height .28s ease}
   header.scrolled .brand .logo{height:44px}
@@ -191,7 +191,7 @@
   @media(max-width:560px){.prod-grid{grid-template-columns:1fr}}
 
   /* ---------- How it works ---------- */
-  .how{background:var(--bg2)}
+  .how{background:var(--bg)}
   .hiw-card{background:var(--surface);border:1px solid var(--line);border-radius:28px;overflow:hidden;box-shadow:0 24px 60px rgba(10,30,70,.07)}
   .hiw-top{padding:52px 48px 48px}
   .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:22px;margin-top:44px}
@@ -205,7 +205,7 @@
 
   /* ---------- Free test band (inside the How-it-works container) ---------- */
   .band{position:relative;overflow:hidden;isolation:isolate}
-  .hiw-card .band{border-radius:0;border:0}
+  .hiw-card .band{border-radius:0;border:0;background:linear-gradient(120deg,#0a1a40 0%,#0f2e68 100%)}
   .band img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2}
   .band .scrim{position:absolute;inset:0;z-index:-1;background:linear-gradient(100deg,rgba(8,11,17,.94) 0%,rgba(8,11,17,.8) 45%,rgba(10,22,44,.55) 100%)}
   .band-inner{padding:64px 56px;max-width:620px}
@@ -271,7 +271,7 @@
   .ig-card .vl:hover{color:var(--blue)}
 
   /* ---------- Team / local ---------- */
-  .team{background:var(--bg2);border-top:1px solid var(--line)}
+  .team{background:var(--bg);border-top:1px solid var(--line)}
   .team-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:52px;align-items:center}
   .team-photo{border-radius:22px;overflow:hidden;border:1px solid var(--line);box-shadow:var(--shadow)}
   .team-photo img{width:100%}
@@ -296,13 +296,13 @@
   @media(max-width:820px){.blog-grid{grid-template-columns:1fr}}
 
   /* ---------- Newsletter + footer ---------- */
-  .news{background:linear-gradient(150deg,var(--blue) 0%,#123a8f 100%);border-radius:26px;padding:54px;display:grid;grid-template-columns:1.2fr 1fr;gap:34px;align-items:center}
+  .news{background:linear-gradient(150deg,var(--blue) 0%,#123a8f 100%);border-radius:26px;padding:56px 54px;display:flex;flex-direction:column;align-items:center;text-align:center;gap:22px}
   .news h2{color:#fff;font-size:clamp(26px,3.4vw,40px);font-weight:800}
   .news p{color:#dbe8ff;margin-top:12px}
-  .news form{display:flex;gap:10px;flex-wrap:wrap}
+  .news form{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;width:100%;max-width:540px}
   .news input{flex:1;min-width:200px;padding:15px 18px;border-radius:999px;border:none;font-size:15px;font-family:inherit}
   .news input:focus{outline:3px solid rgba(255,255,255,.6)}
-  @media(max-width:760px){.news{grid-template-columns:1fr;padding:36px}}
+  @media(max-width:760px){.news{padding:36px}}
 
   footer{background:#080B11;padding:70px 0 36px;border-top:1px solid rgba(255,255,255,.09);margin-top:0}
   .foot{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:34px}
@@ -543,7 +543,7 @@
   </div>
 </section>
 
-<section id="quiz">
+<section id="quiz" style="background:var(--bg2)">
   <div class="wrap">
     <div class="sec-head center">
       <span class="eyebrow center">Water Quiz</span>
@@ -574,12 +574,9 @@
         </div>
       </div>
       <div class="band" id="test">
-        <img src="img/watertest.webp" alt="A Culligan expert performing an in-home water test">
-        <div class="scrim"></div>
         <div class="band-inner">
           <span class="eyebrow">Free · No obligation</span>
           <h2 style="margin-top:14px">Find out exactly what's in your water.</h2>
-          <p>A Culligan expert comes to your home, tests your water on the spot, and explains what it means. You decide what to do next — no pressure, ever.</p>
           <div class="cta">
             <a class="btn btn-primary se-booking-show" href="#test" onclick="if(window._scheduler)return false">Book my free test <svg class="arr" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M7 17L17 7M17 7H8M17 7v9"/></svg></a>
             <a class="btn btn-light" href="tel:5303435100">Call 530-343-5100</a>
@@ -590,7 +587,7 @@
   </div>
 </section>
 
-<section>
+<section style="background:var(--bg2)">
   <div class="wrap">
     <div class="sec-head center">
       <span class="eyebrow center">People trust us</span>
@@ -633,7 +630,7 @@
   </div>
 </section>
 
-<section class="ig" id="instagram">
+<section class="ig" id="instagram" style="background:var(--bg2)">
   <div class="wrap">
     <div class="ig-head">
       <div>
