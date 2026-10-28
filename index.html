@@ -225,15 +225,18 @@
   .rev-rate{display:flex;align-items:center;justify-content:center;gap:9px;margin-bottom:22px;font-size:14px;font-weight:700;color:var(--muted)}
   .rev-rate .stars{color:#ffb300;font-size:18px;letter-spacing:1px}
   .rev-rate b{color:var(--ink)}
-  .rev-stage{position:relative}
-  .rev-slide{position:absolute;inset:0;opacity:0;transition:opacity .45s ease;pointer-events:none;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:34px 34px 30px;display:flex;flex-direction:column;gap:16px;text-align:center}
-  .rev-slide.on{position:relative;opacity:1;pointer-events:auto}
-  .rev-slide .stars{color:#ffb300;font-size:18px;letter-spacing:2px}
-  .rev-slide .q{color:var(--text);font-size:16.5px;line-height:1.55;font-weight:500}
-  .rev-slide .who{display:flex;align-items:center;justify-content:center;gap:12px}
-  .rev-slide .av{width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,var(--blue),var(--aqua));display:grid;place-items:center;color:#fff;font-weight:800;font-size:14px}
-  .rev-slide .who b{color:var(--ink);font-size:15px;display:block}
-  .rev-slide .who small{color:var(--muted);font-size:12.5px}
+  .rev-wrap{max-width:none}
+  .rev-viewport{overflow:hidden}
+  .rev-track{display:flex;gap:18px;transition:transform .55s cubic-bezier(.4,0,.2,1);will-change:transform}
+  .rev-card{flex:0 0 calc((100% - 36px)/3);box-sizing:border-box;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:28px;display:flex;flex-direction:column;gap:14px}
+  .rev-card .stars{color:#ffb300;font-size:17px;letter-spacing:1.5px}
+  .rev-card .q{color:var(--text);font-size:15px;line-height:1.55;flex:1}
+  .rev-card .who{display:flex;align-items:center;gap:12px;margin-top:auto}
+  .rev-card .av{width:42px;height:42px;border-radius:50%;background:linear-gradient(135deg,var(--blue),var(--aqua));display:grid;place-items:center;color:#fff;font-weight:800;font-size:14px;flex:0 0 auto}
+  .rev-card .who b{color:var(--ink);font-size:15px;display:block}
+  .rev-card .who small{color:var(--muted);font-size:12px}
+  @media(max-width:980px){.rev-card{flex-basis:calc((100% - 18px)/2)}}
+  @media(max-width:640px){.rev-card{flex-basis:100%}}
   .rev-ctrls{display:flex;align-items:center;justify-content:center;gap:16px;margin-top:22px}
   .rev-nav{width:38px;height:38px;border-radius:50%;border:1px solid var(--line);background:var(--surface);color:var(--ink);display:grid;place-items:center;cursor:pointer;font-size:18px;line-height:1}
   .rev-nav:hover{border-color:var(--blue);color:var(--blue)}
@@ -592,14 +595,16 @@
     </div>
     <div class="rev-wrap">
       <div class="rev-rate"><span class="stars">★★★★★</span> <b>4.6</b> · 154 Google reviews</div>
-      <div class="rev-stage" id="revStage">
-        <div class="rev-slide on"><span class="stars">★★★★★</span><p class="q">"Myles was one of the best experts we've had in our home in a long time. Professional, personable, and he clearly explained our options. We can't wait to have our water softener installed!"</p><div class="who"><div class="av">DG</div><div><b>Danette Garcia</b><small>★★★★★ · Google review</small></div></div></div>
-        <div class="rev-slide"><span class="stars">★★★★★</span><p class="q">"Chase was incredibly knowledgeable and answered every question thoroughly. Quality materials, testing backed by science, and fair, reasonable pricing. I never felt rushed or pressured. Thanks Chase!"</p><div class="who"><div class="av">EP</div><div><b>Erica Person</b><small>★★★★★ · Google review</small></div></div></div>
-        <div class="rev-slide"><span class="stars">★★★★★</span><p class="q">"My service technician did a fantastic job. Trevor called ahead, arrived right when he said he would, was very thorough, and answered all my questions. Five stars for Trevor, five stars for Culligan."</p><div class="who"><div class="av">TL</div><div><b>Tamara Lund</b><small>★★★★★ · Google review</small></div></div></div>
-        <div class="rev-slide"><span class="stars">★★★★★</span><p class="q">"Myles was excellent! He tested our water and took the time to explain how our softener and reverse-osmosis system work. Knowledgeable, professional, and made everything easy to understand."</p><div class="who"><div class="av">RW</div><div><b>Ryan Williams</b><small>★★★★★ · Google review</small></div></div></div>
-        <div class="rev-slide"><span class="stars">★★★★★</span><p class="q">"Drew was friendly and communicative from beginning to end — efficient at testing, diagnosing, and replacing filters. He called when he was on his way. He'd be welcome in our home anytime."</p><div class="who"><div class="av">CR</div><div><b>Cindy Rauscher</b><small>★★★★★ · Google review</small></div></div></div>
-        <div class="rev-slide"><span class="stars">★★★★★</span><p class="q">"Chaz is the man — I called for a quote and he responded right away, and even got our systems installed on a Saturday. I got two other estimates that weren't the quality of Culligan and cost much more. We got the best systems they make, and they beat the others hands down!"</p><div class="who"><div class="av">BW</div><div><b>Brenda W.</b><small>★★★★★ · Paradise, CA · Yelp review</small></div></div></div>
-        <div class="rev-slide"><span class="stars">★★★★★</span><p class="q">"Incredible company and gentlemen. My well tested positive for bacteria — Clay explained what they'd do, and Luke called back in 30 minutes and walked me through my choices with humor and patience. Highly recommend. If I could give 10 stars I would!"</p><div class="who"><div class="av">SD</div><div><b>Suzanne D.</b><small>★★★★★ · Red Bluff, CA · Yelp review</small></div></div></div>
+      <div class="rev-viewport">
+        <div class="rev-track" id="revTrack">
+          <article class="rev-card"><span class="stars">★★★★★</span><p class="q">"Myles was one of the best experts we've had in our home in a long time. Professional, personable, and he clearly explained our options. We can't wait to have our water softener installed!"</p><div class="who"><div class="av">DG</div><div><b>Danette Garcia</b><small>★★★★★ · Google review</small></div></div></article>
+          <article class="rev-card"><span class="stars">★★★★★</span><p class="q">"Chase was incredibly knowledgeable and answered every question thoroughly. Quality materials, testing backed by science, and fair, reasonable pricing. I never felt rushed or pressured. Thanks Chase!"</p><div class="who"><div class="av">EP</div><div><b>Erica Person</b><small>★★★★★ · Google review</small></div></div></article>
+          <article class="rev-card"><span class="stars">★★★★★</span><p class="q">"My service technician did a fantastic job. Trevor called ahead, arrived right when he said he would, was very thorough, and answered all my questions. Five stars for Trevor, five stars for Culligan."</p><div class="who"><div class="av">TL</div><div><b>Tamara Lund</b><small>★★★★★ · Google review</small></div></div></article>
+          <article class="rev-card"><span class="stars">★★★★★</span><p class="q">"Myles was excellent! He tested our water and took the time to explain how our softener and reverse-osmosis system work. Knowledgeable, professional, and made everything easy to understand."</p><div class="who"><div class="av">RW</div><div><b>Ryan Williams</b><small>★★★★★ · Google review</small></div></div></article>
+          <article class="rev-card"><span class="stars">★★★★★</span><p class="q">"Drew was friendly and communicative from beginning to end — efficient at testing, diagnosing, and replacing filters. He called when he was on his way. He'd be welcome in our home anytime."</p><div class="who"><div class="av">CR</div><div><b>Cindy Rauscher</b><small>★★★★★ · Google review</small></div></div></article>
+          <article class="rev-card"><span class="stars">★★★★★</span><p class="q">"Chaz is the man — I called for a quote and he responded right away, and even got our systems installed on a Saturday. I got two other estimates that weren't the quality of Culligan and cost much more — they beat the others hands down!"</p><div class="who"><div class="av">BW</div><div><b>Brenda W.</b><small>★★★★★ · Paradise, CA · Yelp review</small></div></div></article>
+          <article class="rev-card"><span class="stars">★★★★★</span><p class="q">"Incredible company and gentlemen. My well tested positive for bacteria — Clay explained what they'd do, and Luke called back in 30 minutes and walked me through my choices with humor and patience. If I could give 10 stars I would!"</p><div class="who"><div class="av">SD</div><div><b>Suzanne D.</b><small>★★★★★ · Red Bluff, CA · Yelp review</small></div></div></article>
+        </div>
       </div>
       <div class="rev-ctrls">
         <button class="rev-nav" id="revPrev" type="button" aria-label="Previous review">‹</button>
@@ -925,27 +930,39 @@
     });
   })();
 
-  // reviews carousel
+  // reviews carousel — shows 3 tiles (2 on tablet, 1 on mobile) and auto-advances
   (function(){
-    var stage=document.getElementById('revStage'); if(!stage) return;
-    var slides=[].slice.call(stage.querySelectorAll('.rev-slide'));
+    var track=document.getElementById('revTrack'); if(!track) return;
+    var vp=track.parentElement;
+    var cards=[].slice.call(track.children);
     var dotsWrap=document.getElementById('revDots');
-    var i=0, timer;
-    slides.forEach(function(_,k){
-      var b=document.createElement('button'); b.type='button'; b.setAttribute('aria-label','Review '+(k+1));
-      if(k===0) b.className='on';
-      b.onclick=function(){ go(k); rest(); };
-      dotsWrap.appendChild(b);
-    });
-    var dots=[].slice.call(dotsWrap.children);
-    function go(n){ i=(n+slides.length)%slides.length; slides.forEach(function(s,k){ s.classList.toggle('on',k===i); }); dots.forEach(function(d,k){ d.classList.toggle('on',k===i); }); }
-    function rest(){ clearInterval(timer); timer=setInterval(function(){ go(i+1); },6000); }
+    var i=0, step=0, visible=3, maxI=0, timer;
+    function measure(){
+      var gap=parseFloat(getComputedStyle(track).gap)||18;
+      step=cards[0].offsetWidth+gap;
+      visible=Math.max(1,Math.round((vp.clientWidth+gap)/step));
+      maxI=Math.max(0,cards.length-visible);
+      if(i>maxI) i=maxI;
+      buildDots(); apply();
+    }
+    function buildDots(){
+      dotsWrap.innerHTML='';
+      for(var k=0;k<=maxI;k++){
+        var b=document.createElement('button'); b.type='button'; b.setAttribute('aria-label','Reviews page '+(k+1));
+        (function(k){ b.onclick=function(){ i=k; apply(); rest(); }; })(k);
+        dotsWrap.appendChild(b);
+      }
+    }
+    function apply(){ track.style.transform='translateX(-'+(i*step)+'px)'; [].forEach.call(dotsWrap.children,function(d,k){ d.classList.toggle('on',k===i); }); }
+    function go(n){ i = n>maxI ? 0 : (n<0 ? maxI : n); apply(); }
+    function rest(){ clearInterval(timer); timer=setInterval(function(){ go(i+1); },5000); }
     var pv=document.getElementById('revPrev'), nx=document.getElementById('revNext');
     if(pv) pv.onclick=function(){ go(i-1); rest(); };
     if(nx) nx.onclick=function(){ go(i+1); rest(); };
-    stage.addEventListener('mouseenter',function(){ clearInterval(timer); });
-    stage.addEventListener('mouseleave',rest);
-    rest();
+    vp.addEventListener('mouseenter',function(){ clearInterval(timer); });
+    vp.addEventListener('mouseleave',rest);
+    var rt; window.addEventListener('resize',function(){ clearTimeout(rt); rt=setTimeout(measure,150); });
+    measure(); rest();
   })();
 
   // instagram feed — duplicate cards for a seamless auto-scroll loop
