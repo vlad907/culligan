@@ -1,0 +1,49 @@
+name: Deploy — Production
+
+# Pushes to main go live on the production domain via Cloudflare Pages.
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: cf-pages-production
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    env:
+      # job-level env can read secrets, so steps can gate on it without erroring
+      CF_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+    steps:
+      - uses: actions/checkout@v4
+
+      # --- Static site today: no build step, deploy the repo root ("."). ---
+      # When this moves to Astro, uncomment the build below and change the
+      # deploy directory from "." to "dist" in the Deploy step.
+      #
+      # - uses: actions/setup-node@v4
+      #   with:
+      #     node-version: 20
+      #     cache: npm
+      # - run: npm ci
+      # - run: npm run build
+
+      - name: Deploy to Cloudflare Pages (production)
+        if: ${{ env.CF_TOKEN != '' }}
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: pages deploy . --project-name=culligan-of-chico --branch=main
+
+      - name: Setup needed
+        if: ${{ env.CF_TOKEN == '' }}
+        run: |
+          echo "::notice::Deploy skipped. Add repo secrets CLOUDFLARE_API_TOKEN and"
+          echo "::notice::CLOUDFLARE_ACCOUNT_ID, and create a Pages project named"
+          echo "::notice::culligan-of-chico (production branch = main) to enable."
