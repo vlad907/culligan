@@ -5,8 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="icon" type="image/png" href="img/favicon-drop.png">
 <style>*{box-sizing:border-box}img{max-width:100%}[hidden]{display:none!important}</style>
-<title>Culligan of Chico</title>
-<meta name="description" content="Dark, premium homepage concept for Culligan of Chico — local water experts serving Butte, Glenn & Tehama counties." />
+<title>Culligan of Chico | Water Softeners & Water Treatment in Chico, CA</title>
+<meta name="description" content="Water softeners, reverse-osmosis drinking water, whole-home filtration and bottleless coolers in Chico, CA. Culligan of Chico serves Butte, Glenn, Tehama, Shasta & Plumas counties — book a free in-home water test." />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800;900&family=Hanken+Grotesk:wght@400;500;600;700;800&display=swap">
@@ -176,9 +176,9 @@
   .prod-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:44px}
   .card{display:flex;flex-direction:column;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;transition:transform .22s, border-color .22s, box-shadow .22s}
   .card:hover{transform:translateY(-6px);border-color:var(--line-2);box-shadow:var(--shadow)}
-  .pmedia{height:180px;display:grid;place-items:center;overflow:hidden;background:radial-gradient(130% 120% at 50% 0%, #1e2a3b 0%, #0e1521 100%);border-bottom:1px solid var(--line)}
-  .pmedia img{width:100%;height:100%;object-fit:cover;object-position:center 32%}
-  .pmedia.contain img{width:auto;max-width:78%;height:86%;object-fit:contain;object-position:center top;align-self:start;margin-top:8px;filter:drop-shadow(0 18px 26px rgba(0,0,0,.5))}
+  .pmedia{height:240px;display:grid;place-items:center;overflow:hidden;background:radial-gradient(130% 120% at 50% 0%, #1e2a3b 0%, #0e1521 100%);border-bottom:1px solid var(--line)}
+  .pmedia img{width:100%;height:100%;object-fit:cover;object-position:center 44%}
+  .pmedia.contain img{width:auto;max-width:86%;height:94%;object-fit:contain;object-position:center;filter:drop-shadow(0 18px 26px rgba(0,0,0,.5))}
   .card.feature .pmedia{background:linear-gradient(150deg,var(--blue) 0%,#123a8f 100%)}
   .card-body{padding:24px 24px 26px;display:flex;flex-direction:column;flex:1}
   .card .tag{font-size:11px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--aqua)}
@@ -220,6 +220,48 @@
   .rev .who b{color:var(--ink);font-size:15px}
   .rev .who small{display:block;color:var(--muted);font-size:12.5px}
   @media(max-width:820px){.rev-grid{grid-template-columns:1fr}}
+  /* Reviews carousel */
+  .rev-wrap{max-width:720px;margin:40px auto 0;position:relative}
+  .rev-rate{display:flex;align-items:center;justify-content:center;gap:9px;margin-bottom:22px;font-size:14px;font-weight:700;color:var(--muted)}
+  .rev-rate .stars{color:#ffb300;font-size:18px;letter-spacing:1px}
+  .rev-rate b{color:var(--ink)}
+  .rev-stage{position:relative}
+  .rev-slide{position:absolute;inset:0;opacity:0;transition:opacity .45s ease;pointer-events:none;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:34px 34px 30px;display:flex;flex-direction:column;gap:16px;text-align:center}
+  .rev-slide.on{position:relative;opacity:1;pointer-events:auto}
+  .rev-slide .stars{color:#ffb300;font-size:18px;letter-spacing:2px}
+  .rev-slide .q{color:var(--text);font-size:16.5px;line-height:1.55;font-weight:500}
+  .rev-slide .who{display:flex;align-items:center;justify-content:center;gap:12px}
+  .rev-slide .av{width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,var(--blue),var(--aqua));display:grid;place-items:center;color:#fff;font-weight:800;font-size:14px}
+  .rev-slide .who b{color:var(--ink);font-size:15px;display:block}
+  .rev-slide .who small{color:var(--muted);font-size:12.5px}
+  .rev-ctrls{display:flex;align-items:center;justify-content:center;gap:16px;margin-top:22px}
+  .rev-nav{width:38px;height:38px;border-radius:50%;border:1px solid var(--line);background:var(--surface);color:var(--ink);display:grid;place-items:center;cursor:pointer;font-size:18px;line-height:1}
+  .rev-nav:hover{border-color:var(--blue);color:var(--blue)}
+  .rev-dots{display:flex;gap:8px}
+  .rev-dots button{width:8px;height:8px;border-radius:50%;border:0;background:var(--line);cursor:pointer;padding:0;transition:background .2s,width .2s}
+  .rev-dots button.on{background:var(--blue);width:22px;border-radius:5px}
+  /* Instagram feed */
+  .ig-head{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:20px}
+  .ig-follow{display:inline-flex;align-items:center;gap:9px;padding:12px 20px;border-radius:999px;color:#fff;font-weight:800;font-size:14px;background:linear-gradient(90deg,#833ab4,#e1306c,#f77737);box-shadow:0 12px 26px rgba(225,48,108,.28);white-space:nowrap}
+  .ig-follow svg{width:18px;height:18px}
+  .ig-track-wrap{overflow:hidden;margin-top:38px;-webkit-mask-image:linear-gradient(90deg,transparent,#000 3%,#000 97%,transparent);mask-image:linear-gradient(90deg,transparent,#000 3%,#000 97%,transparent)}
+  .ig-track{display:flex;gap:20px;width:max-content;animation:igscroll 46s linear infinite}
+  .ig-track-wrap:hover .ig-track{animation-play-state:paused}
+  @keyframes igscroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+  .ig-card{width:300px;flex:0 0 auto;background:#fff;border:1px solid var(--line);border-radius:16px;overflow:hidden;box-shadow:0 10px 26px rgba(10,30,70,.07)}
+  .ig-card .top{display:flex;align-items:center;gap:10px;padding:12px 14px}
+  .ig-card .top>img{width:34px;height:34px;border-radius:50%}
+  .ig-card .top b{font-size:13.5px;color:var(--ink);display:block;line-height:1.25}
+  .ig-card .top small{font-size:11.5px;color:var(--muted)}
+  .ig-card .vp{margin-left:auto;font-size:12.5px;font-weight:700;color:var(--blue);text-decoration:none}
+  .ig-card .photo{display:block;width:300px;height:300px;object-fit:cover;background:#eef2f8}
+  .ig-card .meta{padding:11px 14px 15px}
+  .ig-card .acts{display:flex;gap:14px;color:var(--ink)}
+  .ig-card .acts svg{width:22px;height:22px}
+  .ig-card .cap{font-size:13px;color:var(--text);margin-top:9px;line-height:1.45}
+  .ig-card .cap b{color:var(--ink)}
+  .ig-card .vl{display:inline-block;margin-top:8px;font-size:12px;font-weight:700;color:var(--muted);text-decoration:none}
+  .ig-card .vl:hover{color:var(--blue)}
 
   /* ---------- Team / local ---------- */
   .team{background:var(--bg2);border-top:1px solid var(--line)}
@@ -331,7 +373,8 @@
   .quiz-check{display:flex;gap:10px;align-items:flex-start;margin-top:14px;color:var(--muted);font-size:14px;cursor:pointer}
   .quiz-check input{margin-top:3px;flex:none}
   .quiz-result{text-align:center}
-  .quiz-result .ic{width:64px;height:64px;border-radius:18px;margin:0 auto 18px;background:rgba(42,123,255,.14);color:var(--blue-soft);display:grid;place-items:center}
+  .quiz-result .ic{width:68px;height:68px;margin:0 auto 18px;display:grid;place-items:center}
+  .quiz-result .ic img{width:68px;height:68px;display:block}
   .quiz-result h3{font-family:"Archivo",sans-serif;font-weight:800;font-size:26px;color:var(--ink);letter-spacing:-.01em}
   .quiz-result p{color:var(--muted);margin-top:12px;font-size:16px;max-width:52ch;margin-left:auto;margin-right:auto}
   .quiz-rec{text-align:left;background:var(--bg2);border:1px solid var(--line);border-radius:14px;padding:20px;margin-top:22px;display:flex;flex-direction:column;gap:14px}
@@ -435,7 +478,7 @@
         <a class="btn btn-primary se-booking-show" href="#test" onclick="if(window._scheduler)return false">Book a Free Water Test <svg class="arr" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M7 17L17 7M17 7H8M17 7v9"/></svg></a>
         <a class="btn btn-glass" href="#products">Explore Solutions <svg class="arr" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M7 17L17 7M17 7H8M17 7v9"/></svg></a>
       </div>
-      <div class="rating"><span class="stars">★★★★★</span> <b>4.9</b> · 66 Google reviews from your neighbors</div>
+      <div class="rating"><span class="stars">★★★★★</span> <b>4.6</b> · 154 Google reviews from your neighbors</div>
     </div>
   </div>
   <div class="scroll-hint">Scroll<span class="line"></span></div>
@@ -464,7 +507,7 @@
   <div class="wrap">
     <div class="stat"><span class="n" data-to="90"><span class="v">90</span><span class="u">+</span></span><span class="l">Years of Culligan science</span></div>
     <div class="stat"><span class="n" data-to="40"><span class="v">40</span><span class="u">+</span></span><span class="l">Years serving Northern California</span></div>
-    <div class="stat"><span class="n" data-to="66"><span class="v">66</span></span><span class="l">Five-star Google reviews</span></div>
+    <div class="stat"><span class="n" data-to="154"><span class="v">154</span></span><span class="l">4.6★ Google reviews</span></div>
     <div class="stat"><span class="n" data-to="5"><span class="v">5</span></span><span class="l">Counties covered</span></div>
   </div>
 </section>
@@ -547,10 +590,20 @@
       <span class="eyebrow center">People trust us</span>
       <h2>Hear it from your neighbors.</h2>
     </div>
-    <div class="rev-grid">
-      <div class="rev"><span class="stars">★★★★★</span><p class="q">"They tested our water, explained everything, and never once tried to upsell us. Our dishes and shower are night-and-day better."</p><div class="who"><div class="av">JM</div><div><b>Jamie M.</b><small>Chico, CA · Google review</small></div></div></div>
-      <div class="rev"><span class="stars">★★★★★</span><p class="q">"Salt delivery is the best. I never think about it — they just show up. Local, friendly, and quick to answer the phone."</p><div class="who"><div class="av">RD</div><div><b>Rob D.</b><small>Paradise, CA · Google review</small></div></div></div>
-      <div class="rev"><span class="stars">★★★★★</span><p class="q">"Reverse osmosis under the sink changed how much water we actually drink. Wish we'd called Culligan of Chico years ago."</p><div class="who"><div class="av">SL</div><div><b>Sara L.</b><small>Orland, CA · Google review</small></div></div></div>
+    <div class="rev-wrap">
+      <div class="rev-rate"><span class="stars">★★★★★</span> <b>4.6</b> · 154 Google reviews</div>
+      <div class="rev-stage" id="revStage">
+        <div class="rev-slide on"><span class="stars">★★★★★</span><p class="q">"Myles was one of the best experts we've had in our home in a long time. Professional, personable, and he clearly explained our options. We can't wait to have our water softener installed!"</p><div class="who"><div class="av">DG</div><div><b>Danette Garcia</b><small>★★★★★ · Google review</small></div></div></div>
+        <div class="rev-slide"><span class="stars">★★★★★</span><p class="q">"Chase was incredibly knowledgeable and answered every question thoroughly. Quality materials, testing backed by science, and fair, reasonable pricing. I never felt rushed or pressured. Thanks Chase!"</p><div class="who"><div class="av">EP</div><div><b>Erica Person</b><small>★★★★★ · Google review</small></div></div></div>
+        <div class="rev-slide"><span class="stars">★★★★★</span><p class="q">"My service technician did a fantastic job. Trevor called ahead, arrived right when he said he would, was very thorough, and answered all my questions. Five stars for Trevor, five stars for Culligan."</p><div class="who"><div class="av">TL</div><div><b>Tamara Lund</b><small>★★★★★ · Google review</small></div></div></div>
+        <div class="rev-slide"><span class="stars">★★★★★</span><p class="q">"Myles was excellent! He tested our water and took the time to explain how our softener and reverse-osmosis system work. Knowledgeable, professional, and made everything easy to understand."</p><div class="who"><div class="av">RW</div><div><b>Ryan Williams</b><small>★★★★★ · Google review</small></div></div></div>
+        <div class="rev-slide"><span class="stars">★★★★★</span><p class="q">"Drew was friendly and communicative from beginning to end — efficient at testing, diagnosing, and replacing filters. He called when he was on his way. He'd be welcome in our home anytime."</p><div class="who"><div class="av">CR</div><div><b>Cindy Rauscher</b><small>★★★★★ · Google review</small></div></div></div>
+      </div>
+      <div class="rev-ctrls">
+        <button class="rev-nav" id="revPrev" type="button" aria-label="Previous review">‹</button>
+        <div class="rev-dots" id="revDots"></div>
+        <button class="rev-nav" id="revNext" type="button" aria-label="Next review">›</button>
+      </div>
     </div>
   </div>
 </section>
@@ -565,6 +618,28 @@
       <div class="team-names">
         <div class="name"><span class="dot"></span><div><b>Clay Farrell</b><small>Owner</small></div></div>
         <div class="name"><span class="dot"></span><div><b>William Bocast</b><small>Owner</small></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="ig" id="instagram">
+  <div class="wrap">
+    <div class="ig-head">
+      <div>
+        <span class="eyebrow">Follow our work</span>
+        <h2 style="font-family:Archivo;font-size:clamp(28px,4vw,46px);color:var(--ink);font-weight:800;margin-top:14px;letter-spacing:-.02em">Straight from our feed.</h2>
+        <p style="margin-top:10px">Real work and real faces, posted to Instagram · <a href="https://www.instagram.com/culliganofchico/" target="_blank" rel="noopener" style="color:var(--blue);font-weight:700">@culliganofchico</a></p>
+      </div>
+      <a class="ig-follow" href="https://www.instagram.com/culliganofchico/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg> Follow our work</a>
+    </div>
+    <div class="ig-track-wrap">
+      <div class="ig-track" id="igTrack">
+        <article class="ig-card"><div class="top"><img src="img/culligan-c.png" alt=""><div><b>culliganofchico</b><small>Culligan of Chico</small></div><a class="vp" href="https://www.instagram.com/culliganofchico/" target="_blank" rel="noopener">View profile</a></div><a href="https://www.instagram.com/culliganofchico/p/Dexj-h7GYjv/" target="_blank" rel="noopener"><img class="photo" src="img/instagram/ig1.webp" alt="Culligan of Chico Instagram post — meet the team" loading="lazy"></a><div class="meta"><div class="acts"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21s-7-4.5-9.5-9A5 5 0 0 1 12 6a5 5 0 0 1 9.5 6c-2.5 4.5-9.5 9-9.5 9Z"/></svg><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 11.5a8.4 8.4 0 0 1-11.9 7.6L3 21l1.9-6.1A8.4 8.4 0 1 1 21 11.5Z"/></svg><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 2 11 13M22 2l-7 20-4-9-9-4 20-7Z"/></svg></div><div class="cap"><b>culliganofchico</b> Meet the team — William, Owner 👋</div><a class="vl" href="https://www.instagram.com/culliganofchico/p/Dexj-h7GYjv/" target="_blank" rel="noopener">View on Instagram</a></div></article>
+        <article class="ig-card"><div class="top"><img src="img/culligan-c.png" alt=""><div><b>culliganofchico</b><small>Culligan of Chico</small></div><a class="vp" href="https://www.instagram.com/culliganofchico/" target="_blank" rel="noopener">View profile</a></div><a href="https://www.instagram.com/culliganofchico/p/DefdtAYEpw4/" target="_blank" rel="noopener"><img class="photo" src="img/instagram/ig2.webp" alt="Culligan of Chico Instagram post — meet the team" loading="lazy"></a><div class="meta"><div class="acts"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21s-7-4.5-9.5-9A5 5 0 0 1 12 6a5 5 0 0 1 9.5 6c-2.5 4.5-9.5 9-9.5 9Z"/></svg><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 11.5a8.4 8.4 0 0 1-11.9 7.6L3 21l1.9-6.1A8.4 8.4 0 1 1 21 11.5Z"/></svg><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 2 11 13M22 2l-7 20-4-9-9-4 20-7Z"/></svg></div><div class="cap"><b>culliganofchico</b> Meet the team — Eric, Drinking Water Consultant</div><a class="vl" href="https://www.instagram.com/culliganofchico/p/DefdtAYEpw4/" target="_blank" rel="noopener">View on Instagram</a></div></article>
+        <article class="ig-card"><div class="top"><img src="img/culligan-c.png" alt=""><div><b>culliganofchico</b><small>Culligan of Chico</small></div><a class="vp" href="https://www.instagram.com/culliganofchico/" target="_blank" rel="noopener">View profile</a></div><a href="https://www.instagram.com/culliganofchico/p/DeNwnbOGg6S/" target="_blank" rel="noopener"><img class="photo" src="img/instagram/ig3.webp" alt="Culligan of Chico Instagram post — meet the team" loading="lazy"></a><div class="meta"><div class="acts"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21s-7-4.5-9.5-9A5 5 0 0 1 12 6a5 5 0 0 1 9.5 6c-2.5 4.5-9.5 9-9.5 9Z"/></svg><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 11.5a8.4 8.4 0 0 1-11.9 7.6L3 21l1.9-6.1A8.4 8.4 0 1 1 21 11.5Z"/></svg><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 2 11 13M22 2l-7 20-4-9-9-4 20-7Z"/></svg></div><div class="cap"><b>culliganofchico</b> Meet the team — Jacklyn, Branch Operations Manager</div><a class="vl" href="https://www.instagram.com/culliganofchico/p/DeNwnbOGg6S/" target="_blank" rel="noopener">View on Instagram</a></div></article>
+        <article class="ig-card"><div class="top"><img src="img/culligan-c.png" alt=""><div><b>culliganofchico</b><small>Culligan of Chico</small></div><a class="vp" href="https://www.instagram.com/culliganofchico/" target="_blank" rel="noopener">View profile</a></div><a href="https://www.instagram.com/culliganofchico/p/DeIfe-kGLD-/" target="_blank" rel="noopener"><img class="photo" src="img/instagram/ig4.webp" alt="Culligan of Chico Instagram post — hard water can be ruff on dogs too" loading="lazy"></a><div class="meta"><div class="acts"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21s-7-4.5-9.5-9A5 5 0 0 1 12 6a5 5 0 0 1 9.5 6c-2.5 4.5-9.5 9-9.5 9Z"/></svg><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 11.5a8.4 8.4 0 0 1-11.9 7.6L3 21l1.9-6.1A8.4 8.4 0 1 1 21 11.5Z"/></svg><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 2 11 13M22 2l-7 20-4-9-9-4 20-7Z"/></svg></div><div class="cap"><b>culliganofchico</b> Hard water can be ruff on dogs, too 🐾</div><a class="vl" href="https://www.instagram.com/culliganofchico/p/DeIfe-kGLD-/" target="_blank" rel="noopener">View on Instagram</a></div></article>
+        <article class="ig-card"><div class="top"><img src="img/culligan-c.png" alt=""><div><b>culliganofchico</b><small>Culligan of Chico</small></div><a class="vp" href="https://www.instagram.com/culliganofchico/" target="_blank" rel="noopener">View profile</a></div><a href="https://www.instagram.com/culliganofchico/p/Dd-Mc0VGIdN/" target="_blank" rel="noopener"><img class="photo" src="img/instagram/ig5.webp" alt="Culligan of Chico Instagram post — meet the team" loading="lazy"></a><div class="meta"><div class="acts"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21s-7-4.5-9.5-9A5 5 0 0 1 12 6a5 5 0 0 1 9.5 6c-2.5 4.5-9.5 9-9.5 9Z"/></svg><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 11.5a8.4 8.4 0 0 1-11.9 7.6L3 21l1.9-6.1A8.4 8.4 0 1 1 21 11.5Z"/></svg><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 2 11 13M22 2l-7 20-4-9-9-4 20-7Z"/></svg></div><div class="cap"><b>culliganofchico</b> Meet the team — Myles, Water Treatment Specialist</div><a class="vl" href="https://www.instagram.com/culliganofchico/p/Dd-Mc0VGIdN/" target="_blank" rel="noopener">View on Instagram</a></div></article>
       </div>
     </div>
   </div>
@@ -755,7 +830,7 @@
     var body=document.getElementById('quizBody'); if(!body) return;
     var bar=document.getElementById('quizBar');
     var DROP='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="30" height="30"><path d="M12 3s6 6.5 6 11a6 6 0 0 1-12 0c0-4.5 6-11 6-11Z"/></svg>';
-    var CMARK='<svg viewBox="0 0 48 48" width="36" height="36" aria-hidden="true"><path d="M34 16a13 13 0 1 0 0 16" fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round"/></svg>';
+    var CMARK='<img src="img/culligan-c.png" alt="Culligan" width="68" height="68">';
     var CHECK='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg>';
     var ARROW='<svg class="arr" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M7 17L17 7M17 7H8M17 7v9"/></svg>';
     var A={concerns:[],place:null,source:null,drinking:null,people:null,own:null,tested:null,email:'',news:false};
@@ -846,6 +921,35 @@
         tip.style.left=(e.clientX-rc.left)+'px'; tip.style.top=(e.clientY-rc.top)+'px'; tip.hidden=false; });
       p.addEventListener('mouseleave',function(){ tip.hidden=true; });
     });
+  })();
+
+  // reviews carousel
+  (function(){
+    var stage=document.getElementById('revStage'); if(!stage) return;
+    var slides=[].slice.call(stage.querySelectorAll('.rev-slide'));
+    var dotsWrap=document.getElementById('revDots');
+    var i=0, timer;
+    slides.forEach(function(_,k){
+      var b=document.createElement('button'); b.type='button'; b.setAttribute('aria-label','Review '+(k+1));
+      if(k===0) b.className='on';
+      b.onclick=function(){ go(k); rest(); };
+      dotsWrap.appendChild(b);
+    });
+    var dots=[].slice.call(dotsWrap.children);
+    function go(n){ i=(n+slides.length)%slides.length; slides.forEach(function(s,k){ s.classList.toggle('on',k===i); }); dots.forEach(function(d,k){ d.classList.toggle('on',k===i); }); }
+    function rest(){ clearInterval(timer); timer=setInterval(function(){ go(i+1); },6000); }
+    var pv=document.getElementById('revPrev'), nx=document.getElementById('revNext');
+    if(pv) pv.onclick=function(){ go(i-1); rest(); };
+    if(nx) nx.onclick=function(){ go(i+1); rest(); };
+    stage.addEventListener('mouseenter',function(){ clearInterval(timer); });
+    stage.addEventListener('mouseleave',rest);
+    rest();
+  })();
+
+  // instagram feed — duplicate cards for a seamless auto-scroll loop
+  (function(){
+    var t=document.getElementById('igTrack'); if(!t) return;
+    t.innerHTML += t.innerHTML;
   })();
 </script>
 
