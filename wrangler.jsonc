@@ -1,0 +1,8 @@
+{
+  "name": "culligan-of-chico",
+  "pages_build_output_dir": ".",
+  "compatibility_date": "2024-11-01",
+  "d1_databases": [
+    { "binding": "DB", "database_name": "culligan-tools", "database_id": "fba2d5e3-12b8-4d6c-a00b-9af6a9297e77" }
+  ]
+}
