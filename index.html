@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" data-theme="light">
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -11,35 +11,16 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800;900&family=Hanken+Grotesk:wght@400;500;600;700;800&display=swap">
 <style>
-  /* Committed dark, cinematic design — palette painted explicitly so it holds on any host ground */
+  /* Light theme — single palette, no dark mode */
   :root{
-    --bg:#080B11;
-    --bg2:#0C1119;
-    --surface:#121A26;
-    --surface-2:#18222F;
-    --line:rgba(255,255,255,.09);
-    --line-2:rgba(255,255,255,.14);
-    --blue:#2A7BFF;
-    --blue-soft:#5B9CFF;
-    --aqua:#46D3F0;
-    --text:#EDF2F9;
-    --muted:#93A3B8;
-    --white:#fff;
-    --gold:#FFC24B;
-    --maxw:1200px;
-    --r:18px;
-    --shadow:0 24px 60px -24px rgba(0,0,0,.75);
-    --ink:#ffffff;
-  }
-  :root[data-theme="light"]{
     --bg:#F3F7FC; --bg2:#E9F1F9; --surface:#FFFFFF; --surface-2:#EAF2FA;
     --line:rgba(12,28,50,.10); --line-2:rgba(12,28,50,.16);
     --blue:#2968FE; --blue-soft:#5B8CFF; --aqua:#2968FE;
-    --text:#3A4756; --muted:#5E6E7E; --ink:#0B1622; --gold:#E8A61C;
+    --text:#3A4756; --muted:#5E6E7E; --ink:#0B1622; --gold:#E8A61C; --white:#fff;
+    --maxw:1200px; --r:18px;
     --shadow:0 20px 50px -26px rgba(20,50,90,.28);
+    color-scheme:light;
   }
-  html{color-scheme:dark}
-  :root[data-theme="light"]{color-scheme:light}
   *{box-sizing:border-box}
   html{scroll-behavior:smooth}
   body{margin:0;background:var(--bg);color:var(--text);
@@ -84,12 +65,6 @@
   .brand{display:flex;align-items:center;gap:11px}
   .brand .logo{height:100px;width:auto;transition:height .28s ease}
   header.scrolled .brand .logo{height:44px}
-  .theme-toggle{width:40px;height:40px;border-radius:50%;border:1.5px solid var(--line-2);background:rgba(255,255,255,.06);color:#fff;display:grid;place-items:center;cursor:pointer;transition:transform .2s,background .2s;flex:none}
-  .theme-toggle:hover{transform:translateY(-1px);background:rgba(255,255,255,.13)}
-  .theme-toggle svg{width:19px;height:19px}
-  .theme-toggle .i-moon{display:none}
-  :root[data-theme="light"] .theme-toggle .i-sun{display:none}
-  :root[data-theme="light"] .theme-toggle .i-moon{display:block}
   .brand .of{font-weight:800;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--aqua)}
   .navlinks{display:flex;gap:36px;margin-left:18px;font-size:19px;font-weight:700;color:rgba(255,255,255,.82)}
   .navlinks a{position:relative;padding:4px 0}
@@ -425,7 +400,6 @@
   }
 </style>
 
-<script>document.documentElement.setAttribute('data-theme','light');</script>
 <header id="hdr">
   <div class="subnav">
     <div class="wrap subnav-in">
