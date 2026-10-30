@@ -695,10 +695,12 @@
         <h2>Get water tips &amp; local offers.</h2>
         <p>Join the newsletter for seasonal water tips, member deals, and the occasional salt-delivery reminder.</p>
       </div>
-      <form onsubmit="return false">
-        <input type="email" placeholder="you@email.com" aria-label="Email address">
-        <button class="btn btn-light" type="submit">Subscribe <svg class="arr" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M7 17L17 7M17 7H8M17 7v9"/></svg></button>
+      <form id="newsForm" onsubmit="return false">
+        <input type="email" id="newsEmail" placeholder="you@email.com" aria-label="Email address" required>
+        <input type="text" name="company" id="newsCompany" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
+        <button class="btn btn-light" type="submit" id="newsBtn">Subscribe <svg class="arr" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M7 17L17 7M17 7H8M17 7v9"/></svg></button>
       </form>
+      <p id="newsMsg" role="status" aria-live="polite" style="color:#eaf1ff;font-size:14px;min-height:1.2em;margin:2px 0 0"></p>
     </div>
   </div>
 </section>
@@ -852,6 +854,21 @@
     var i=0;
     function esc(s){return s.replace(/"/g,'&quot;');}
     function setBar(){ bar.style.width=(i/(steps.length-1)*100)+'%'; }
+    var TOOLS_API='https://culligan-tools.vlad-19e.workers.dev';
+    function computeRecs(){
+      var c=A.concerns, recs=[];
+      function has(x){return c.indexOf(x)>-1;}
+      if(has("Spots on dishware")||has("Skin & hair problems")||has("Buildup on shower head")||A.source==="Well Water")
+        recs.push(["High-Efficiency Water Softener","Your answers point to hard-water minerals — the cause of spots, scale, and dry skin."]);
+      if(has("Taste")||has("Odor")||A.drinking==="Bottled water")
+        recs.push(["Reverse-Osmosis Drinking Water","Taste and odor issues are usually solved with reverse-osmosis drinking water or whole-home filtration — and it ends the bottled-water habit."]);
+      if(has("Staining (yellow, orange, or red)")||A.source==="Well Water")
+        recs.push(["Iron &amp; Staining Filter","Yellow, orange, or red staining points to iron — a dedicated filter clears it up."]);
+      if(A.place==="Office")
+        recs.push(["Bottleless Water Cooler","For a workplace, a bottleless cooler gives hot &amp; cold purified water — and ice — with no bottles to lug."]);
+      if(!recs.length) recs.push(["Free In-Home Water Test","A quick on-site test will pinpoint exactly what's in your water."]);
+      return recs;
+    }
     function render(){
       setBar(); var s=steps[i];
       if(s.type==='intro'){
@@ -890,28 +907,39 @@
           A.email=em; A.news=body.querySelector('#qNews').checked;
           if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(em)){ body.querySelector('#qErr').textContent='Please enter a valid email address.'; return; }
           if(!body.querySelector('#qConsent').checked){ body.querySelector('#qErr').textContent='Please agree to be contacted to see your results.'; return; }
+          try{ fetch(TOOLS_API+'/api/lead',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({email:em,concerns:A.concerns,recommendations:computeRecs().map(function(r){return r[0];}),answers:{place:A.place,source:A.source,drinking:A.drinking,people:A.people,own:A.own,tested:A.tested},consent:true,newsletter:A.news})}).catch(function(){}); }catch(e){}
           i++; render();
         };
         return;
       }
       // result
-      var c=A.concerns, recs=[];
-      function has(x){return c.indexOf(x)>-1;}
-      if(has("Spots on dishware")||has("Skin & hair problems")||has("Buildup on shower head")||A.source==="Well Water")
-        recs.push(["High-Efficiency Water Softener","Your answers point to hard-water minerals — the cause of spots, scale, and dry skin."]);
-      if(has("Taste")||has("Odor")||A.drinking==="Bottled water")
-        recs.push(["Reverse-Osmosis Drinking Water","Taste and odor issues are usually solved with reverse-osmosis drinking water or whole-home filtration — and it ends the bottled-water habit."]);
-      if(has("Staining (yellow, orange, or red)")||A.source==="Well Water")
-        recs.push(["Iron &amp; Staining Filter","Yellow, orange, or red staining points to iron — a dedicated filter clears it up."]);
-      if(A.place==="Office")
-        recs.push(["Bottleless Water Cooler","For a workplace, a bottleless cooler gives hot &amp; cold purified water — and ice — with no bottles to lug."]);
-      if(!recs.length) recs.push(["Free In-Home Water Test","A quick on-site test will pinpoint exactly what's in your water."]);
+      var recs=computeRecs();
       var items=recs.map(function(r){return '<div class="r"><span style="color:var(--aqua);font-size:18px;line-height:1.2">●</span><div><b>'+r[0]+'</b><div class="d">'+r[1]+'</div></div></div>';}).join('');
       body.innerHTML='<div class="quiz-result"><div class="ic">'+CMARK+'</div><h3>Here\'s what we\'d look at first</h3><p>Based on your answers, these are the most likely fixes. The only way to know for sure is a free in-home water test — no cost, no pressure.</p><div class="quiz-rec">'+items+'</div><div class="cta"><a class="btn btn-primary se-booking-show" href="#test" onclick="if(window._scheduler){window._scheduler.show();return false;}">Book my free water test '+ARROW+'</a></div><div class="quiz-nav"><button class="quiz-back" id="qBack2">← Back</button><button class="quiz-back" id="qAgain">Start over</button></div></div>';
       var bk2=body.querySelector('#qBack2'); if(bk2) bk2.onclick=function(){ i--; render(); };
       var ag=body.querySelector('#qAgain'); if(ag) ag.onclick=function(){ A={concerns:[],place:null,source:null,drinking:null,people:null,own:null,tested:null,email:'',news:false}; i=0; render(); };
     }
     render();
+  })();
+
+  // newsletter sign-up -> Culligan Tools (/api/subscribe)
+  (function(){
+    var f=document.getElementById('newsForm'); if(!f) return;
+    var email=document.getElementById('newsEmail'), hp=document.getElementById('newsCompany'),
+        btn=document.getElementById('newsBtn'), msg=document.getElementById('newsMsg');
+    var API='https://culligan-tools.vlad-19e.workers.dev';
+    f.addEventListener('submit',function(e){
+      e.preventDefault();
+      var em=(email.value||'').trim();
+      if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(em)){ msg.textContent='Please enter a valid email address.'; return; }
+      if(hp && hp.value){ msg.textContent='Thanks!'; return; } // honeypot
+      btn.disabled=true; msg.textContent='Signing you up…';
+      fetch(API+'/api/subscribe',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({email:em,source:'newsletter'})})
+        .then(function(r){ return r.json().catch(function(){return {};}); })
+        .then(function(j){ if(j && j.ok){ msg.textContent='You’re on the list — thanks! 💧'; f.reset(); } else { msg.textContent=(j&&j.error)||'Something went wrong — please try again.'; } })
+        .catch(function(){ msg.textContent='Something went wrong — please try again.'; })
+        .then(function(){ btn.disabled=false; });
+    });
   })();
 
   // service-area county choropleth hover
