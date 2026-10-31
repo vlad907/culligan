@@ -1,0 +1,45 @@
+# Old WordPress URLs -> new single-page sections (301 permanent).
+# Cloudflare Pages: first match wins; splat (*) rules yield to real static assets,
+# so /img/*, /sitemap.xml, /robots.txt etc. are still served normally.
+
+# Contact / service area
+/service-area*              /#contact    301
+/service-areas*             /#contact    301
+/contact*                   /#contact    301
+
+# FAQ / informational
+/faq-items*                 /#faq        301
+
+# Quiz / water quality
+/water-quality-quiz*        /#quiz       301
+/water-quality-heatmap*     /#quiz       301
+/whats-in-your-water*       /#quiz       301
+
+# Free water test
+/free-water-test*           /#test       301
+
+# Products / services
+/water-soften*              /#products   301
+/water-softening*           /#products   301
+/what-does-a-water-softener-do*  /#products  301
+/salt-free-conditioner*     /#products   301
+/salt-delivery*             /#products   301
+/drinking-water*            /#products   301
+/purified*                  /#products   301
+/start-drinking*            /#products   301
+/whole-home*                /#products   301
+/bottle-free*               /#products   301
+/combination-ice*           /#products   301
+/the-techy-water-dispenser* /#products   301
+/culligan-peak*             /#products   301
+/commercial-and-industrial* /#products   301
+/portable-exchange*         /#products   301
+/non-backwashing*           /#products   301
+/product*                   /#products   301
+/services*                  /#products   301
+/hans-premium*              /#products   301
+/culligan-unlimited*        /#products   301
+/culligan-high-efficiency*  /#products   301
+
+# Everything else from the old site -> homepage
+/*                          /            301
