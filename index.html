@@ -465,9 +465,18 @@
 
 <section class="hero" id="top">
   <div class="hero-bg">
-    <video id="heroVideo" class="hero-video" autoplay muted loop playsinline preload="auto" poster="img/hero-poster.webp" aria-hidden="true">
-      <source src="media/hero.mp4" type="video/mp4">
-    </video>
+    <video id="heroVideo" class="hero-video" autoplay muted loop playsinline preload="auto" poster="img/hero-poster.webp" aria-hidden="true"
+      data-src-mobile="media/hero.mp4" data-poster-mobile="img/hero-poster.webp"
+      data-src-desktop="media/hero-desktop.mp4" data-poster-desktop="img/hero-poster-desktop.webp"></video>
+    <script>
+      /* pick the hero video by viewport: landscape on desktop, portrait on phone (loads only one) */
+      (function(){var v=document.getElementById('heroVideo');if(!v)return;
+        var d=window.matchMedia('(min-width:768px)').matches;
+        if(d){v.setAttribute('poster',v.getAttribute('data-poster-desktop'));}
+        var s=document.createElement('source');
+        s.src=d?v.getAttribute('data-src-desktop'):v.getAttribute('data-src-mobile');
+        s.type='video/mp4';v.appendChild(s);v.load();})();
+    </script>
   </div>
   <div class="hero-scrim"></div>
   <div class="wrap">
