@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://culligan-of-chico.pages.dev/sitemap.xml
+Sitemap: https://culliganofchico.com/sitemap.xml
