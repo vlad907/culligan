@@ -172,6 +172,8 @@
   .pmedia{height:240px;display:grid;place-items:center;overflow:hidden;background:radial-gradient(130% 120% at 50% 0%, #1e2a3b 0%, #0e1521 100%);border-bottom:1px solid var(--line)}
   .pmedia img{width:100%;height:100%;object-fit:cover;object-position:center 44%}
   .pmedia.contain img{width:auto;max-width:86%;height:94%;object-fit:contain;object-position:center;filter:drop-shadow(0 18px 26px rgba(0,0,0,.5))}
+  .pmedia.pcooler{position:relative}
+  .pmedia.pcooler img{position:absolute;inset:0;width:100%;height:100%;max-width:none;object-fit:cover;object-position:center 13%}
   .card.feature .pmedia{background:linear-gradient(150deg,var(--blue) 0%,#123a8f 100%)}
   .card-body{padding:24px 24px 26px;display:flex;flex-direction:column;flex:1}
   .card .tag{font-size:11px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--aqua)}
@@ -534,7 +536,7 @@
         <div class="card-body"><span class="tag">Your home</span><h3>Residential</h3><p>Softening, drinking water, and whole-home filtration — cleaner, softer, better-tasting water at every tap in your home.</p><span class="go">Learn more <svg class="arr" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M7 17L17 7M17 7H8M17 7v9"/></svg></span></div>
       </a>
       <a class="card" href="#contact" onclick="if(window._scheduler){window._scheduler.show({schedulerId:'sched_c7ywa99yrt67pi3znymxf1uc'});return false;}">
-        <div class="pmedia contain"><img src="img/p-cooler.webp" alt="Bottle-free water cooler"></div>
+        <div class="pmedia pcooler"><img src="img/p-cooler.webp" alt="Bottle-free water cooler"></div>
         <div class="card-body"><span class="tag">Your office</span><h3>Bottleless Water Cooler</h3><p>Endless hot &amp; cold purified water — plus ice — on demand. No bottles to store, lift, or run out of. Perfect for breakrooms, offices, and warehouses.</p><span class="go">Learn more <svg class="arr" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M7 17L17 7M17 7H8M17 7v9"/></svg></span></div>
       </a>
       <a class="card" href="#contact" onclick="if(window._scheduler){window._scheduler.show({schedulerId:'sched_c7ywa99yrt67pi3znymxf1uc'});return false;}">
