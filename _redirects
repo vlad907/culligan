@@ -1,45 +1,123 @@
-# Old WordPress URLs -> new single-page sections (301 permanent).
-# Cloudflare Pages: first match wins; splat (*) rules yield to real static assets,
-# so /img/*, /sitemap.xml, /robots.txt etc. are still served normally.
-
-# Contact / service area
-/service-area*              /#contact    301
-/service-areas*             /#contact    301
-/contact*                   /#contact    301
-
-# FAQ / informational
-/faq-items*                 /#faq        301
-
-# Quiz / water quality
-/water-quality-quiz*        /#quiz       301
-/water-quality-heatmap*     /#quiz       301
-/whats-in-your-water*       /#quiz       301
-
-# Free water test
-/free-water-test*           /#test       301
-
-# Products / services
-/water-soften*              /#products   301
-/water-softening*           /#products   301
+# Old WordPress URLs -> new single-page sections (301). Explicit list (no catch-all,
+# so real assets like /img/*, /sitemap.xml, /robots.txt are served normally).
+/faq-items/are-smart-water-bottles-necessary-to-stick-to-your-recommended-daily-water-intake*  /#faq  301
+/faq-items/what-is-the-difference-between-carbon-filtration-and-reverse-osmosis*  /#faq  301
+/hey-chico-got-water-woes-heres-the-lowdown-on-calis-latest-moves-against-pfas*  /  301
+/faq-items/2-why-does-my-water-smell-like-chlorine-during-cal-water-upgrades*  /#faq  301
+/faq-items/do-i-need-to-be-an-existing-customer-to-call-culligan-of-chico*  /#faq  301
+/faq-items/3-is-the-water-still-safe-to-drink-during-cal-water-upgrades*  /#faq  301
+/faq-items/4-how-can-i-remove-chlorine-taste-or-odor-from-my-tap-water*  /#faq  301
+/faq-items/what-should-i-do-if-my-water-suddenly-looks-cloudy-or-murky*  /#faq  301
+/how-hard-is-chico-california-water-and-what-you-can-do-about-it-today*  /  301
+/culligan-of-chico-a-pinnacle-of-local-business-and-community-service*  /  301
+/faq-items/how-fast-can-culligan-of-chico-respond-to-water-concerns*  /#faq  301
+/faq-items/will-a-water-softener-help-with-eczema-or-sensitive-skin*  /#faq  301
+/faq-items/will-using-a-water-softener-help-with-dry-skin-and-hair*  /#faq  301
+/faq-items/how-much-does-a-culligan-whole-house-water-filter-cost*  /#faq  301
+/faq-items/does-filtered-water-really-help-with-hydration-habits*  /#faq  301
+/faq-items/5-how-do-i-know-if-my-home-needs-a-filtration-system*  /#faq  301
+/faq-items/can-water-issues-affect-cooking-and-food-preparation*  /#faq  301
+/your-step-by-step-guide-to-better-water-with-culligan-of-chico*  /  301
+/faq-items/do-refrigerator-filters-remove-serious-contaminants*  /#faq  301
+/faq-items/is-filtered-water-really-better-than-bottled-water*  /#faq  301
+/faq-items/should-private-well-owners-near-chico-test-for-pce*  /#faq  301
+/tap-into-the-best-chicos-ultimate-guide-to-water-filtration*  /#products  301
+/faq-items/are-carbon-filters-enough-to-treat-water-at-home*  /#faq  301
+/faq-items/can-water-softening-really-extend-appliance-life*  /#faq  301
+/faq-items/im-on-a-well-outside-town-what-should-i-test-for*  /#faq  301
+/faq-items/what-does-hard-water-actually-do-to-a-dishwasher*  /#faq  301
+/faq-items/can-a-plumber-install-a-water-filtration-system*  /#faq  301
+/faq-items/is-filtered-water-different-from-softened-water*  /#faq  301
+/faq-items/what-does-contact-time-mean-in-water-filtration*  /#contact  301
+/faq-items/how-do-i-know-if-i-need-multi-stage-filtration*  /#faq  301
+/faq-items/why-is-cal-water-digging-up-my-street-in-chico*  /#faq  301
+/why-you-should-opt-for-the-right-sized-home-water-system*  /#products  301
+/clearing-the-waters-a-day-in-the-life-of-a-culligan-pro*  /  301
+/faq-items/how-often-do-water-filters-need-to-be-changed*  /#faq  301
+/faq-items/is-a-carbon-filter-enough-for-chico-tap-water*  /#faq  301
+/culligan-peak-combination-ice-maker-water-dispenser-2*  /#products  301
+/faq-items/can-a-home-water-filter-remove-pce-or-vocs*  /#faq  301
+/faq-items/do-i-need-a-system-if-my-water-tastes-fine*  /#faq  301
+/faq-items/does-a-water-softener-require-maintenance*  /#faq  301
+/faq-items/im-on-city-water-do-i-really-need-a-test*  /#faq  301
+/faq-items/do-homes-in-chico-truly-have-hard-water*  /#faq  301
+/faq-items/how-do-i-know-if-my-home-has-hard-water*  /#faq  301
+/faq-items/how-often-should-i-test-my-private-well*  /#faq  301
+/faq-items/how-much-water-should-i-drink-each-day*  /#faq  301
+/faq-items/does-hard-water-really-cause-dry-skin*  /#faq  301
+/keep-your-new-years-resolution-drink-more-water*  /  301
+/faq-items/is-cloudy-water-always-an-emergency*  /#faq  301
+/faq-items/what-is-the-chico-groundwater-plume*  /#faq  301
+/inspect-n-check-on-any-water-treatment-system*  /#products  301
+/carbon-vs-multi-stage-water-filtration-chico*  /#products  301
+/faq-items/what-is-pfas-and-why-should-i-care*  /#faq  301
+/faq-items/is-chico-city-water-safe-to-drink*  /#faq  301
+/faq-items/what-does-water-purification-mean*  /#faq  301
+/benefits-of-whole-house-water-purification*  /#products  301
+/best-whole-house-water-filter-chico-norcal*  /#products  301
+/faq-items/how-do-i-know-whats-in-my-water*  /#faq  301
+/faq-items/is-hard-water-actually-harmful*  /#faq  301
+/faq-items/is-hard-water-bad-for-my-home*  /#faq  301
+/faq-items/how-long-does-the-visit-take*  /#faq  301
+/faq-items/does-chico-have-hard-water*  /#faq  301
+/whole-home-water-filtration-systems*  /#products  301
+/chico-wildfire-water-contamination*  /  301
+/combination-ice-maker-water-cooler*  /#products  301
+/commercial-and-industrial-services*  /#products  301
+/culligan-high-efficiency-municipal*  /#products  301
+/faq-items/how-hard-is-chicos-water*  /#faq  301
+/improve-your-home-water-efficiency*  /  301
+/myths-and-facts-of-water-treatment*  /#products  301
+/thanksgiving-water-emergency-chico*  /  301
+/water-softening-and-conditioning-2*  /#products  301
+/water-softening-and-conditioning*  /#products  301
+/culligan-water-product-packages*  /#products  301
+/hans-premium-water-by-culligan*  /#products  301
+/back-to-80s-chico-water-plume*  /  301
+/cal-water-upgrades-chico-2025*  /  301
+/fake-filters-real-risks-chico*  /#products  301
+/shelf-bottled-water-red-flags*  /  301
+/start-drinking-filtered-water*  /#products  301
 /what-does-a-water-softener-do*  /#products  301
-/salt-free-conditioner*     /#products   301
-/salt-delivery*             /#products   301
-/drinking-water*            /#products   301
-/purified*                  /#products   301
-/start-drinking*            /#products   301
-/whole-home*                /#products   301
-/bottle-free*               /#products   301
-/combination-ice*           /#products   301
-/the-techy-water-dispenser* /#products   301
-/culligan-peak*             /#products   301
-/commercial-and-industrial* /#products   301
-/portable-exchange*         /#products   301
-/non-backwashing*           /#products   301
-/product*                   /#products   301
-/services*                  /#products   301
-/hans-premium*              /#products   301
-/culligan-unlimited*        /#products   301
-/culligan-high-efficiency*  /#products   301
-
-# Everything else from the old site -> homepage
-/*                          /            301
+/holiday-appliance-care-chico*  /  301
+/portable-exchange-deionizers*  /#products  301
+/cost-of-hard-water-chico-ca*  /  301
+/fight-dry-skin-this-winter*  /  301
+/bottle-free-water-coolers*  /#products  301
+/no-payments-for-12-months*  /  301
+/portable-exchange-service*  /  301
+/the-techy-water-dispenser*  /#products  301
+/accessibility-statement*  /  301
+/non-backwashing-filters*  /#products  301
+/purified-drinking-water*  /#products  301
+/no-payments-until-2024*  /  301
+/salt-free-conditioner*  /#products  301
+/service-area/chico-ca*  /#contact  301
+/water-quality-heatmap*  /#quiz  301
+/whats-in-your-water*  /#quiz  301
+/culligan-unlimited*  /  301
+/privacy-and-policy*  /  301
+/water-quality-quiz*  /#quiz  301
+/financing-options*  /  301
+/trade-in-trade-up*  /  301
+/drinking-water-2*  /#products  301
+/product-packages*  /#products  301
+/soft-water-saves*  /  301
+/free-water-test*  /#test  301
+/water-softeners*  /#products  301
+/contact-update*  /#contact  301
+/privacy-policy*  /  301
+/internal-page*  /  301
+/products-menu*  /#products  301
+/salt-delivery*  /#products  301
+/service-areas*  /#contact  301
+/service-area*  /#contact  301
+/components*  /  301
+/contact-us*  /#contact  301
+/faq-items*  /#faq  301
+/products*  /#products  301
+/services*  /#products  301
+/contact*  /#contact  301
+/about*  /  301
+/home*  /  301
+/test*  /  301
